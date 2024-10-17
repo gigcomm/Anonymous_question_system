@@ -46,7 +46,9 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'main.apps.MainConfig',
-    'rest_framework'
+    'rest_framework',
+    'rest_framework_swagger',       # Swagger 
+    'drf_yasg'                      # Yet Another Swagger generator
 ]
 
 MIDDLEWARE = [
@@ -111,7 +113,7 @@ CELERY_TIMEZONE = 'Europe/Moscow'  # UTC
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': os.getenv("POSTGRES_DB_NAME", 'Anonymous_question_system'),
+        'NAME': os.getenv("POSTGRES_DB_NAME", 'anon_test'),
         'USER': os.getenv("POSTGRES_DB_USER", 'postgres'),
         'PASSWORD': os.getenv("POSTGRES_DB_PASSWORD", '1'),
         'HOST': os.getenv("POSTGRES_DB_HOST", 'localhost'),
