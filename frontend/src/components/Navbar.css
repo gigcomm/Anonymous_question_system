@@ -1,0 +1,46 @@
+nav {
+    height: 60px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center; /* Центрируем по вертикали */
+    padding-right: 20px; /* Отступ справа */
+    background-image: url()
+  }
+  .nav-right {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+  }
+  .nav-left {
+    display: flex;
+    align-items: center;
+  }
+
+  nav a {
+    color: white; /* Цвет текста ссылок */
+    text-decoration: none; /* Убираем подчёркивание */
+    font-size: 18px; /* Размер шрифта */
+    margin-left: 30px; /* Отступы между ссылками */
+    font-family: 'Arial', sans-serif; /* Изменим шрифт */
+    display: flex;
+    align-items: center; /* Для выравнивания иконок и текста */
+    transition: color 0.3s ease; /* Плавное изменение цвета при наведении */
+  }
+  
+  nav a:hover {
+    color: aquamarine; /* Цвет при наведении */
+  }
+  
+  .icon {
+    margin-right: 8px; /* Отступ между иконкой и текстом */
+    font-size: 20px; /* Размер иконок */
+  }
+  
+  nav a:visited {
+    color: white; /* Отключаем синий цвет после посещения ссылки */
+  }
+
+  .site-icon {
+    width: 60px; /* Иконка сайта может быть больше */
+    height: 60px;
+  }
