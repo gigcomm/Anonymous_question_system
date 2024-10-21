@@ -1,0 +1,82 @@
+
+.LoginBase{
+    height: calc(100vh - 60px);
+    background-image: url('../../public/imgs/backart.png'); /* Укажи путь к твоему изображению */
+    background-size: contain; /* Изображение будет покрывать весь фон */
+    background-position: center; /* Центрируем изображение */
+    background-repeat: no-repeat;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    display: flex;
+    display: flex;
+}
+
+.LoginWindow{
+    border-style: solid;
+    border-radius: 30px;
+    border-width: 20px;
+    border-color: rgba(215, 214, 214, 0.3);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 10px;
+    background: radial-gradient(rgba(146, 162, 152, 0.8) 50%, rgba(149, 122, 104, 0.7));
+}
+
+.LoginText {
+    border: none;
+    border-radius: 20px;
+    background: transparent;
+    padding: 3px;
+    font-size: 24px;
+    color: #000;
+    margin-bottom: 20px; 
+}
+
+.LoginInput {
+    width: 300px;
+    padding: 10px;
+    margin-bottom: 20px; 
+    border: none;
+    border-radius: 10px;
+    background: rgba(255, 255, 255, 0.5); 
+    color: #333;
+    font-size: 16px;
+    box-shadow: 0 3px 0 rgba(0, 0, 0, 0.2); 
+    outline: none;
+    transition: all 0.3s ease;
+}
+
+.LoginInput:focus {
+    background: rgba(255, 255, 255, 0.7); 
+    box-shadow: 0 3px 0 rgba(0, 0, 0, 0.4); 
+    padding: 15px;
+}
+
+.LoginBtn {
+    border: none;
+    border-radius: 10px;
+    background: rgba(255, 255, 255, 0.5);
+    box-shadow: 0 3px 0 rgba(255, 255, 255, 0.3);
+    top: 0;
+    transition: all 0.3s;
+    width: 150px;
+    padding: 10px;
+    font-size: 18px;
+    cursor: pointer;
+}
+
+.LoginBtn:hover {
+    background: rgb(30, 196, 30, 0.7);
+    box-shadow: none;
+    position: relative;
+    top: 5px;
+}
+
+html,body{
+    margin: 0;
+    padding: 0;
+    height: 100%;
+
+}
