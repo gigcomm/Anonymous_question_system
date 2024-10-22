@@ -12,10 +12,14 @@ https://docs.djangoproject.com/en/5.1/ref/settings/
 import os
 
 from pathlib import Path
+import environ
 
-from dotenv import find_dotenv, load_dotenv
+# from dotenv import find_dotenv, load_dotenv
+env = environ.Env()
 
-load_dotenv(find_dotenv())
+environ.Env.read_env(env_file=Path('C:/Users/iguly/PycharmProjects/Anonymous_question/backend/docker/env/.env.dev'))
+
+# load_dotenv(find_dotenv())
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -24,17 +28,12 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/5.1/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = os.getenv('DJANGO_SECRET_KEY', 'django-insecure-0*clfk0=#d+-=&vx33$d@98f+@^zvs%89orzbzo+i%9+ivv$0r')
+SECRET_KEY = env('DJANGO_SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = os.getenv('DJANGO_DEBUG', 'True') == 'True'
+DEBUG = int(env('DEBUG', default=1))
 
-ALLOWED_HOSTS = [
-    'localhost',
-    '127.0.0.1',
-    '::1',
-    'testserver',
-                 ]
+ALLOWED_HOSTS = env('DJANGO_ALLOWED_HOSTS').split(',')
 
 # Application definition
 
@@ -48,7 +47,8 @@ INSTALLED_APPS = [
     'main.apps.MainConfig',
     'rest_framework',
     'rest_framework_swagger',       # Swagger
-    'drf_yasg'                      # Yet Another Swagger generator
+    'drf_yasg',                      # Yet Another Swagger generator
+    'corsheaders'
 ]
 
 MIDDLEWARE = [
@@ -59,10 +59,10 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
-
+    'corsheaders.middleware.CorsMiddleware',
 ]
 
-ROOT_URLCONF = 'backend.urls'
+ROOT_URLCONF = 'config.urls'
 
 TEMPLATES = [
     {
@@ -80,8 +80,13 @@ TEMPLATES = [
     },
 ]
 
+CORS_ALLOWED_ORIGINS = [
+    "http://localhost:3000",
+]
+
+
 # WSGI_APPLICATION = 'backend.wsgi.application'
-ASGI_APPLICATION = 'backend.asgi.application'
+ASGI_APPLICATION = 'django_backend.config.asgi.application'
 
 CHANNELS_LAYERS = {
     'default': {
@@ -92,14 +97,15 @@ CHANNELS_LAYERS = {
 CACHES = {
     'default': {
         'BACKEND': 'django.core.cache.backends.redis.RedisCache',
-        'LOCATION': 'redis://localhost:6379',
+        'LOCATION': env('REDIS_LOCATION')
+
     }
 }
 
 # Celery settings
 
-CELERY_BROKER_URL = 'redis://localhost:6379/0'
-CELERY_RESULT_BACKEND = 'redis://localhost:6379/0'
+CELERY_BROKER_URL = env('CELERY_BROKER_URL')
+CELERY_RESULT_BACKEND = env('CELERY_RESULT_BACKEND')
 CELERY_TASK_TRACK_STARTED = True
 CELERY_TASK_TIME_LIMIT = 30 * 60
 CELERY_ACCEPT_CONTENT = ['application/json']
@@ -113,11 +119,11 @@ CELERY_TIMEZONE = 'Europe/Moscow'  # UTC
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': os.getenv("POSTGRES_DB_NAME", 'Anonymous_question_system'),
-        'USER': os.getenv("POSTGRES_DB_USER", 'postgres'),
-        'PASSWORD': os.getenv("POSTGRES_DB_PASSWORD", '1'),
-        'HOST': os.getenv("POSTGRES_DB_HOST", 'localhost'),
-        'PORT': os.getenv("POSTGRES_DB_PORT", '5432'),
+        'NAME': env('POSTGRES_DB_NAME'),
+        'USER':  env('POSTGRES_DB_USER'),
+        'PASSWORD':env('POSTGRES_DB_PASSWORD'),
+        'HOST': env('POSTGRES_DB_HOST'),
+        'PORT': env('POSTGRES_DB_PORT'),
     }
 }
 

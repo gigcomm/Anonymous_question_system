@@ -4,14 +4,14 @@ import os
 
 from celery import Celery
 
-# Set the default Django settings module for the 'celery' program.
-os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'backend.settings')
+# Set the default Django settings module for the 'celery_files' program.
+os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'config.settings')
 
-app = Celery('backend')
+app = Celery('config', broker='redis://localhost:6379/0')
 
 # Using a string here means the worker doesn't have to serialize
 # the configuration object to child processes.
-# - namespace='CELERY' means all celery-related configuration keys
+# - namespace='CELERY' means all celery_files-related configuration keys
 #   should have a `CELERY_` prefix.
 app.config_from_object('django.conf:settings', namespace='CELERY')
 
