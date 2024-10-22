@@ -27,7 +27,7 @@ const Login = () => {
         <button className='LoginBtn' type={'button'} onClick={() => {
           setAuth(true)
           navigate(from, { replace: true });
-        }}>Login</button>
+        }}>Войти</button>
         </div>
     </div>
   )
