@@ -1,9 +1,9 @@
 
 .LoginBase{
     height: calc(100vh - 60px);
-    background-image: url('../../public/imgs/backart.png'); /* Укажи путь к твоему изображению */
-    background-size: cover; /* Изображение будет покрывать весь фон */
-    background-position: center; /* Центрируем изображение */
+    background-image: url('../../public/imgs/backart.png'); 
+    background-size: cover; 
+    background-position: center; 
     background-repeat: no-repeat;
     display: flex;
     justify-content: center;
