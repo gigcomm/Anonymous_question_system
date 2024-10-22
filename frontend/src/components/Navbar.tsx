@@ -16,15 +16,15 @@ function Navbar() {
       </div>
       <div className="nav-right">
         <Link to="/admin">
-          <img src="/assets/icons/admin-icon.png" className="icon" /> Admin
+          <img src="/imgs/admin-icon.png" className="icon" /> Admin
         </Link>
         {isAuthenticated ? (
           <Link to="/logout">
-            <img src="/assets/icons/logout-icon.png" className="icon" /> Logout
+            <img src="/imgs/logout-icon.png" className="icon" /> Logout
           </Link>
         ) : (
           <Link to="/login">
-            <img src="/assets/icons/login-icon.png" className="icon" /> Login
+            <img  src="imgs/login-icon.png" className="icon" /> Login
           </Link>
         )}
         </div>

@@ -2,7 +2,7 @@
 .LoginBase{
     height: calc(100vh - 60px);
     background-image: url('../../public/imgs/backart.png'); /* Укажи путь к твоему изображению */
-    background-size: contain; /* Изображение будет покрывать весь фон */
+    background-size: cover; /* Изображение будет покрывать весь фон */
     background-position: center; /* Центрируем изображение */
     background-repeat: no-repeat;
     display: flex;
@@ -10,6 +10,7 @@
     align-items: center;
     display: flex;
     display: flex;
+ 
 }
 
 .LoginWindow{
