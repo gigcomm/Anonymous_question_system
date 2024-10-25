@@ -3,6 +3,36 @@ networks:
 
 
 services:
+  backend:
+    container_name: backend
+    build:
+      context: ./backend
+      dockerfile: Dockerfile
+    working_dir: /usr/src/app/backend/django_backend
+    ports:
+      - "8000:8000"
+    env_file:
+      - backend/docker/env/.env.dev
+    volumes:
+      - ./:/usr/src/app
+    depends_on:
+      - postgres
+      - redis
+    command: sh -c "python manage.py makemigrations &&
+      python manage.py migrate &&
+      python manage.py runserver 0.0.0.0:8000"
+    networks:
+      - dev
+
+
+  frontend:
+    container_name: frontend
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile
+    networks:
+      - dev
+
 
   nginx:
     container_name: nginx
@@ -20,43 +50,13 @@ services:
       - dev
 
 
-
-  backend:
-    container_name: backend
-    build:
-      context: ./backend
-      dockerfile: Dockerfile
-    ports:
-      - "8000:8000"
-    env_file:
-      - backend/docker/env/.env.dev
-    volumes:
-      - ./:/usr/src/app
-    depends_on:
-      - postgres
-      - redis
-    command: sh -c "python backend/django_backend/manage.py makemigrations &&
-                    python backend/django_backend/manage.py migrate &&
-                    python backend/django_backend/manage.py runserver 0.0.0.0:8000"
-    networks:
-      - dev
-
-
-  frontend:
-    container_name: frontend
-    build:
-      context: ./frontend
-      dockerfile: Dockerfile
-    networks:
-      - dev
-
   redis:
     image: redis:7.4-alpine
     container_name: redis
     env_file:
       - backend/docker/env/.env.dev
     ports:
-       - "${REDIS_PORT}:6379"
+      - "${REDIS_PORT}:6379"
     networks:
       - dev
 
@@ -104,13 +104,14 @@ services:
       context: ./backend
       dockerfile: Dockerfile
     container_name: celery-worker
+    working_dir: /usr/src/app/backend/django_backend
     restart: always
     env_file:
       - backend/docker/env/.env.dev
     volumes:
       - ./:/usr/src/app
       - media:/app/media
-    command: celery -A backend/django_backend/celery_app worker --loglevel=info --logfile=./docker/logs/celery-worker.log
+    command: celery -A celery_app worker --loglevel=info
     depends_on:
       - redis
       - rabbitmq
@@ -123,6 +124,7 @@ services:
       context: ./backend
       dockerfile: Dockerfile
     container_name: celery-beat
+    working_dir: /usr/src/app/backend/django_backend
     restart: always
     env_file:
       - backend/docker/env/.env.dev
@@ -133,7 +135,7 @@ services:
       - redis
       - rabbitmq
       - backend
-    command: celery -A django_backend/celery_app beat --loglevel=info --logfile=./docker/logs/celery-beat.log
+    command: celery -A celery_app beat --loglevel=info
     networks:
       - dev
 
