@@ -1,7 +1,0 @@
-celery==5.4.0
-redis==5.1.1
-psycopg2==2.9.9
-importlib_metadata==8.5.0
-Django==4.2.16
-django-celery-beat==2.5.0
-django-celery-results==2.5.0
