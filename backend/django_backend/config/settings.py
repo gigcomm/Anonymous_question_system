@@ -9,12 +9,10 @@ https://docs.djangoproject.com/en/5.1/topics/settings/
 For the full list of settings and their values, see
 https://docs.djangoproject.com/en/5.1/ref/settings/
 """
-import os
 
 from pathlib import Path
 import environ
 
-# from dotenv import find_dotenv, load_dotenv
 env = environ.Env()
 
 environ.Env.read_env(env_file=Path('C:/Users/iguly/PycharmProjects/Anonymous_question/backend/docker/env/.env.dev'))
@@ -121,8 +119,8 @@ DATABASES = {
         'ENGINE': 'django.db.backends.postgresql',
         'NAME': env('POSTGRES_DB_NAME'),
         'USER':  env('POSTGRES_DB_USER'),
-        'PASSWORD':env('POSTGRES_DB_PASSWORD'),
-        'HOST': env('POSTGRES_DB_HOST'),
+        'PASSWORD': env('POSTGRES_DB_PASSWORD'),
+        'HOST': 'postgres',
         'PORT': env('POSTGRES_DB_PORT'),
     }
 }

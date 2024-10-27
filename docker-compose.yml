@@ -26,6 +26,11 @@ services:
     build:
       context: ./backend
       dockerfile: Dockerfile
+    environment:
+      POSTGRES_USER: ${POSTGRES_DB_USER}
+      POSTGRES_PASSWORD: ${POSTGRES_DB_PASSWORD}
+      POSTGRES_DB: ${POSTGRES_DB_NAME}
+      POSTGRES_HOST: ${POSTGRES_DB_USER}
     ports:
       - "8000:8000"
     env_file:
@@ -105,12 +110,13 @@ services:
       dockerfile: Dockerfile
     container_name: celery-worker
     restart: always
+    working_dir: /usr/src/app/backend/django_backend
     env_file:
       - backend/docker/env/.env.dev
     volumes:
       - ./:/usr/src/app
       - media:/app/media
-    command: celery -A backend/django_backend/celery_app worker --loglevel=info --logfile=./docker/logs/celery-worker.log
+    command: celery -A celery_app worker --loglevel=info
     depends_on:
       - redis
       - rabbitmq
@@ -124,6 +130,7 @@ services:
       dockerfile: Dockerfile
     container_name: celery-beat
     restart: always
+    working_dir: /usr/src/app/backend/django_backend
     env_file:
       - backend/docker/env/.env.dev
     volumes:
@@ -133,7 +140,7 @@ services:
       - redis
       - rabbitmq
       - backend
-    command: celery -A django_backend/celery_app beat --loglevel=info --logfile=./docker/logs/celery-beat.log
+    command: celery -A celery_app beat --loglevel=info
     networks:
       - dev
 
