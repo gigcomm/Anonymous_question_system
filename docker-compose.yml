@@ -31,6 +31,7 @@ services:
       POSTGRES_PASSWORD: ${POSTGRES_DB_PASSWORD}
       POSTGRES_DB: ${POSTGRES_DB_NAME}
       POSTGRES_HOST: ${POSTGRES_DB_USER}
+    working_dir: /usr/src/app/backend/django_backend
     ports:
       - "8000:8000"
     env_file:
@@ -40,9 +41,9 @@ services:
     depends_on:
       - postgres
       - redis
-    command: sh -c "python backend/django_backend/manage.py makemigrations &&
-                    python backend/django_backend/manage.py migrate &&
-                    python backend/django_backend/manage.py runserver 0.0.0.0:8000"
+    command: sh -c "python manage.py makemigrations &&
+      python manage.py migrate &&
+      python manage.py runserver 0.0.0.0:8000"
     networks:
       - dev
 
@@ -61,7 +62,7 @@ services:
     env_file:
       - backend/docker/env/.env.dev
     ports:
-       - "${REDIS_PORT}:6379"
+      - "${REDIS_PORT}:6379"
     networks:
       - dev
 

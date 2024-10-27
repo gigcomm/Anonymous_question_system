@@ -14,7 +14,7 @@ COPY ./requirements.txt .
 RUN pip install -r requirements.txt
 
 WORKDIR /usr/src/app
-
+PYPATH=
 RUN apk del .build-deps
 
 COPY . .
