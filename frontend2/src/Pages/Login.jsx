@@ -1,13 +1,7 @@
-import useAuth from '../hooks/useAuth';
-import { useLocation, useNavigate } from 'react-router-dom';
 import './Login.css'
 
 const Login = () => {
 
-  const { setAuth } = useAuth()
-  const navigate = useNavigate()
-  const location = useLocation()
-  const from = location.state?.from?.pathname || '/'
   return (
     <div className='LoginBase'>
       <div className='LoginWindow'>
@@ -25,12 +19,10 @@ const Login = () => {
           placeholder='Пароль'
         />
         <button className='LoginBtn' type={'button'} onClick={() => {
-          setAuth(true)
-          navigate(from, { replace: true });
+        
         }}>Войти</button>
         </div>
     </div>
   )
 }
-
-export default Login
+export  {Login}

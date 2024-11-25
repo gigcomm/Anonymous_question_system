@@ -1,0 +1,9 @@
+.head{
+    width:100%;
+    background-color: #607D8B; 
+    color:#8BC34A; 
+    font-size:200%;
+    padding: 15px;
+    position: fixed;
+    z-index: 999;
+}
