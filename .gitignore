@@ -2,5 +2,5 @@
 /.idea
 /venv
 
-./backend/docker/env/.env.dev
-./.env
+.env.dev
+.env
