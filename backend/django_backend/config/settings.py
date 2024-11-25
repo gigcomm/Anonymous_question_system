@@ -15,7 +15,7 @@ import environ
 
 env = environ.Env()
 
-environ.Env.read_env(env_file=Path('C:/Users/iguly/PycharmProjects/Anonymous_question/backend/docker/env/.env.dev'))
+environ.Env.read_env(env_file=Path('C:/Users/Максим/Desktop/Anonymous_question_system/backend/docker/env/.env.dev'))
 
 # load_dotenv(find_dotenv())
 
@@ -42,11 +42,12 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'main.apps.MainConfig',
+    'Anonymous_question.apps.Anonymous_questionConfig',
     'rest_framework',
     'rest_framework_swagger',       # Swagger
     'drf_yasg',                      # Yet Another Swagger generator
-    'corsheaders'
+    'corsheaders',
+
 ]
 
 MIDDLEWARE = [
@@ -120,7 +121,7 @@ DATABASES = {
         'NAME': env('POSTGRES_DB_NAME'),
         'USER':  env('POSTGRES_DB_USER'),
         'PASSWORD': env('POSTGRES_DB_PASSWORD'),
-        'HOST': 'postgres',
+        'HOST': 'localhost',
         'PORT': env('POSTGRES_DB_PORT'),
     }
 }
