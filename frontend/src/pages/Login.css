@@ -1,13 +1,16 @@
 
 .LoginBase{
     height: calc(100vh - 60px);
-    background-image: url('../../src/components/backart.png'); 
+    background-image: url('../../public/imgs/backart.png'); 
     background-size: cover; 
     background-position: center; 
     background-repeat: no-repeat;
     display: flex;
     justify-content: center;
     align-items: center;
+    display: flex;
+    display: flex;
+ 
 }
 
 .LoginWindow{

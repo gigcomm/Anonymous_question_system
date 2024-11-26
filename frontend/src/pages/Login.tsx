@@ -1,3 +1,4 @@
+
 import './Login.css'
 
 const Login = () => {
@@ -25,4 +26,4 @@ const Login = () => {
     </div>
   )
 }
-export  {Login}
+export default Login
