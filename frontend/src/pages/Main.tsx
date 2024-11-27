@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import './Main.css'
 
 type Question = {
   id: number;
@@ -55,7 +56,7 @@ const Main: React.FC = () => {
   };
 
   return (
-    <div style={{ maxWidth: '800px', margin: '0 auto', padding: '20px', fontFamily: 'Arial, sans-serif' }}>
+    <div className='base' style={{ maxWidth: '800px', margin: '0 auto', padding: '20px', fontFamily: 'Arial, sans-serif' }}>
       <h1 style={{ textAlign: 'center' }}>Создание теста</h1>
       <div style={{ marginBottom: '20px' }}>
         <input
@@ -75,6 +76,7 @@ const Main: React.FC = () => {
       <div>
         {questions.map((q) => (
           <div
+          className='base'
             key={q.id}
             style={{
               marginBottom: '20px',
@@ -85,11 +87,11 @@ const Main: React.FC = () => {
             }}
           >
             <input
+            className='text-q'
               type="text"
               placeholder="Введите текст вопроса"
               value={q.questionText}
               onChange={(e) => handleQuestionChange(q.id, 'questionText', e.target.value)}
-              style={{ width: '100%', padding: '10px', fontSize: '16px', marginBottom: '10px' }}
             />
             {q.type === 'multiple-choice' && q.options && (
               <div>
@@ -105,35 +107,18 @@ const Main: React.FC = () => {
                   </div>
                 ))}
                 <button
+                className='add-var'
                   type="button"
                   onClick={() => addOption(q.id)}
-                  style={{
-                    backgroundColor: '#007bff',
-                    color: 'white',
-                    padding: '5px 10px',
-                    fontSize: '14px',
-                    border: 'none',
-                    borderRadius: '3px',
-                    cursor: 'pointer',
-                  }}
                 >
                   Добавить вариант
                 </button>
               </div>
             )}
             <button
+            className='delet-q'
               type="button"
               onClick={() => deleteQuestion(q.id)}
-              style={{
-                backgroundColor: '#dc3545',
-                color: 'white',
-                padding: '5px 10px',
-                fontSize: '14px',
-                border: 'none',
-                borderRadius: '3px',
-                cursor: 'pointer',
-                marginTop: '10px',
-              }}
             >
               Удалить вопрос
             </button>
@@ -142,51 +127,23 @@ const Main: React.FC = () => {
       </div>
       <div>
         <button
+        className='add-text-q'
           type="button"
           onClick={() => addQuestion('text')}
-          style={{
-            backgroundColor: '#28a745',
-            color: 'white',
-            padding: '10px 20px',
-            fontSize: '16px',
-            border: 'none',
-            borderRadius: '5px',
-            cursor: 'pointer',
-            marginRight: '10px',
-          }}
         >
           Добавить текстовый вопрос
         </button>
         <button
+        className='add-var-q'
           type="button"
           onClick={() => addQuestion('multiple-choice')}
-          style={{
-            backgroundColor: '#17a2b8',
-            color: 'white',
-            padding: '10px 20px',
-            fontSize: '16px',
-            border: 'none',
-            borderRadius: '5px',
-            cursor: 'pointer',
-          }}
         >
           Добавить вопрос с вариантами
         </button>
       </div>
       <button
+      className='save-test'
         onClick={handleSave}
-        style={{
-          marginTop: '20px',
-          backgroundColor: '#343a40',
-          color: 'white',
-          padding: '10px 20px',
-          fontSize: '16px',
-          border: 'none',
-          borderRadius: '5px',
-          cursor: 'pointer',
-          display: 'block',
-          width: '100%',
-        }}
       >
         Сохранить тест
       </button>
