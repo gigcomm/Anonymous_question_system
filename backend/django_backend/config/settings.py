@@ -21,8 +21,6 @@ env_path = BASE_DIR / 'docker' / 'env' / '.env.dev'
 # Загружаем .env
 env = environ.Env()
 environ.Env.read_env(env_file=env_path)
-print(f"Expected .env file at: {env_path}")
-print(f"File exists: {env_path.exists()}")
 
 
 # Quick-start development settings - unsuitable for production
