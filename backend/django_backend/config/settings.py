@@ -13,14 +13,17 @@ https://docs.djangoproject.com/en/5.1/ref/settings/
 from pathlib import Path
 import environ
 
+BASE_DIR = Path(__file__).resolve().parent.parent.parent  # Измените, если нужно
+
+# Указываем относительный путь к файлу .env
+env_path = BASE_DIR / 'docker' / 'env' / '.env.dev'
+
+# Загружаем .env
 env = environ.Env()
+environ.Env.read_env(env_file=env_path)
+print(f"Expected .env file at: {env_path}")
+print(f"File exists: {env_path.exists()}")
 
-environ.Env.read_env(env_file=Path('C:/Users/Максим/Desktop/Anonymous_question_system/backend/docker/env/.env.dev'))
-
-# load_dotenv(find_dotenv())
-
-# Build paths inside the project like this: BASE_DIR / 'subdir'.
-BASE_DIR = Path(__file__).resolve().parent.parent
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/5.1/howto/deployment/checklist/
@@ -42,7 +45,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'Anonymous_question.apps.Anonymous_questionConfig',
+    'anonymous_question.apps.Anonymous_questionConfig',
     'rest_framework',
     'rest_framework_swagger',       # Swagger
     'drf_yasg',                      # Yet Another Swagger generator
