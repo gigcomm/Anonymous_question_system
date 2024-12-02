@@ -9,7 +9,7 @@ function Navbar() {
   const { isAuthenticated } = useAuth()
   return (
     <>
-      <nav>
+      <nav className='Head'>
         <div className="nav-left">
           {/* Иконка сайта слева */}
           <Link to="/">

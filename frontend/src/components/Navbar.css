@@ -1,3 +1,7 @@
+.Head{
+  background-color: #1b5074;
+}
+
 nav {
     height: 60px;
     display: flex;

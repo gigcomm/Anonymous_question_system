@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import './Coments.css'
 
 const Com: React.FC = () => {
   const [formData, setFormData] = useState({
@@ -20,6 +21,7 @@ const Com: React.FC = () => {
   };
 
   return (
+    <div className='base'>
     <div style={{ maxWidth: '600px', margin: '0 auto', padding: '20px', fontFamily: 'Arial, sans-serif' }}>
       <h1 style={{ textAlign: 'center' }}>Форма обратной связи</h1>
       <p style={{ textAlign: 'center' }}>Пожалуйста, заполните форму ниже, чтобы оставить отзыв.</p>
@@ -86,6 +88,7 @@ const Com: React.FC = () => {
           Отправить
         </button>
       </form>
+    </div>
     </div>
   );
 };

@@ -56,7 +56,8 @@ const Main: React.FC = () => {
   };
 
   return (
-    <div className='base' style={{ maxWidth: '800px', margin: '0 auto', padding: '20px', fontFamily: 'Arial, sans-serif' }}>
+    <div className='base'>
+    <div style={{ maxWidth: '1000px', margin: '0 auto', padding: '20px', fontFamily: 'Arial, sans-serif' }}>
       <h1 style={{ textAlign: 'center' }}>Создание теста</h1>
       <div style={{ marginBottom: '20px' }}>
         <input
@@ -147,6 +148,7 @@ const Main: React.FC = () => {
       >
         Сохранить тест
       </button>
+    </div>
     </div>
   );
 };
