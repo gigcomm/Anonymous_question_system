@@ -17,7 +17,7 @@ import os
 BASE_DIR = Path(__file__).resolve().parent.parent.parent.parent # Измените, если нужно
 
 # Указываем относительный путь к файлу .env
-env_path = BASE_DIR / 'docker' / 'env' / '.env.dev'
+env_path = BASE_DIR / 'backend' / 'docker' / 'env' / '.env.dev'
 
 # Загружаем .env
 env = environ.Env()
@@ -44,7 +44,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'Anonymous_question.apps.Anonymous_questionConfig',
+    'anonymous_question.apps.Anonymous_questionConfig',
     'rest_framework',
     'rest_framework_swagger',       # Swagger
     'drf_yasg',                      # Yet Another Swagger generator

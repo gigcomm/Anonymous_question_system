@@ -36,7 +36,7 @@ schema_view = get_schema_view(
 urlpatterns = [
     path('docs/', schema_view.with_ui('swagger', cache_timeout=0), name='schema-swagger-ui'),
     path('admin/', admin.site.urls),
-    path("api/", include("Anonymous_question.urls")),
+    path("api/", include("anonymous_question.urls")),
     re_path(r'^.*$', TemplateView.as_view(template_name="index.html")),
 ] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
 
