@@ -12,15 +12,17 @@ https://docs.djangoproject.com/en/5.1/ref/settings/
 
 from pathlib import Path
 import environ
+import os
 
+BASE_DIR = Path(__file__).resolve().parent.parent.parent.parent # Измените, если нужно
+
+# Указываем относительный путь к файлу .env
+env_path = BASE_DIR / 'backend' / 'docker' / 'env' / '.env.dev'
+
+# Загружаем .env
 env = environ.Env()
+environ.Env.read_env(env_file=env_path)
 
-environ.Env.read_env(env_file=Path('C:/Users/iguly/PycharmProjects/Anonymous_question/backend/docker/env/.env.dev'))
-
-# load_dotenv(find_dotenv())
-
-# Build paths inside the project like this: BASE_DIR / 'subdir'.
-BASE_DIR = Path(__file__).resolve().parent.parent
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/5.1/howto/deployment/checklist/
@@ -42,11 +44,12 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'main.apps.MainConfig',
+    'anonymous_question.apps.Anonymous_questionConfig',
     'rest_framework',
     'rest_framework_swagger',       # Swagger
     'drf_yasg',                      # Yet Another Swagger generator
-    'corsheaders'
+    'corsheaders',
+
 ]
 
 MIDDLEWARE = [
@@ -65,7 +68,7 @@ ROOT_URLCONF = 'config.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [os.path.join(BASE_DIR, 'frontend/build')],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -120,7 +123,7 @@ DATABASES = {
         'NAME': env('POSTGRES_DB_NAME'),
         'USER':  env('POSTGRES_DB_USER'),
         'PASSWORD': env('POSTGRES_DB_PASSWORD'),
-        'HOST': 'postgres',
+        'HOST': 'localhost',
         'PORT': env('POSTGRES_DB_PORT'),
     }
 }
@@ -157,7 +160,8 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/5.1/howto/static-files/
 
-STATIC_URL = 'static/'
+STATIC_URL = '/static/'
+STATICFILES_DIRS = [os.path.join(BASE_DIR, 'frontend/build/static')]  # Папка с React-сборкой
 
 
 # Default primary key field type

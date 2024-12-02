@@ -1,34 +1,62 @@
-.button-main {
-    min-width: 100px;
-    font-family: inherit;
-    appearance: none;
-    border: 0;
-    border-radius: 5px;
-    background: #4676d7;
-    color: #fff;
-    padding: 8px 156px;
-    font-size: 30px;
-    cursor: pointer;
+.add-var {
+  background-color: #007bff;
+  color: white;
+  padding: 5px 10px;
+  font-size: 14px;
+  border: none;
+  border-radius: 3px;
+  cursor: pointer;
+}
 
-  }
-  
-  .button-main:hover {
-    background: #1d49aa;
-  }
-  
-  .button-main:focus {
-    outline: none;
-    box-shadow: 0 0 0 4px #cbd6ee;
-  }
+.delet-q {
+  background-color: #dc3545;
+  color: white;
+  padding: 5px 10px;
+  font-size: 14px;
+  border: none;
+  border-radius: 3px;
+  cursor: pointer;
+  margin-top: 10px;
+}
 
-  .text-main{
-    font-size: 40px;
-    text-align: center;
-    color: white;
-  }
+.add-text-q {
+  background-color: #28a745;
+  color: white;
+  padding: 10px 20px;
+  font-size: 16px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  margin-right: 10px;
+}
 
-  .need{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-  }
+.add-var-q {
+  background-color: #17a2b8;
+  color: white;
+  padding: 10px 20px;
+  font-size: 16px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.save-test {
+  margin-top: 20px;
+  background-color: #343a40;
+  color: white;
+  padding: 10px 20px;
+  font-size: 16px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  display: block;
+  width: 100%;
+}
+
+.text-q {
+  width: 95%;
+  padding: 10px;
+  font-size: 16px;
+  margin-bottom: 10px;
+}
+
