@@ -123,10 +123,12 @@ DATABASES = {
         'NAME': env('POSTGRES_DB_NAME'),
         'USER':  env('POSTGRES_DB_USER'),
         'PASSWORD': env('POSTGRES_DB_PASSWORD'),
-        'HOST': 'localhost',
+        'HOST': 'localhost', # 'postgres'
         'PORT': env('POSTGRES_DB_PORT'),
     }
 }
+AUTH_USER_MODEL = 'anonymous_question.User'
+
 
 # Password validation
 # https://docs.djangoproject.com/en/5.1/ref/settings/#auth-password-validators
