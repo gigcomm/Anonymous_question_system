@@ -6,18 +6,6 @@ import uuid
 
 # Модель пользователя
 class User(AbstractUser):
-    # Переопределите поля, чтобы избежать конфликта имен с группами и правами
-    groups = models.ManyToManyField(
-        Group,
-        related_name='custom_user_set',  # Уникальное имя для обратной связи
-        blank=True,
-    )
-    user_permissions = models.ManyToManyField(
-        Permission,
-        related_name='custom_user_permissions',  # Уникальное имя для обратной связи
-        blank=True,
-    )
-
     def __str__(self):
         return self.username
 
