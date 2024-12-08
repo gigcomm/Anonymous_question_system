@@ -1,10 +1,6 @@
 from .views import *
-from django.urls import path, include
-from rest_framework.routers import DefaultRouter
+from django.urls import path, include, re_path
 
-# router = DefaultRouter()
-# router.register('data', GetMethod, basename='data')
-# urlpatterns = router.urls
 
 urlpatterns = [
     path('questions/', QuestionAPIList.as_view(), name='question-list'),
@@ -18,4 +14,6 @@ urlpatterns = [
     path('participant-answer/', ParticipantAnswerAPIList.as_view(), name = 'participant-answer-list'),
     path('test-results/', TestResultAPIList.as_view(), name = 'test-result-list'),
     path('test-links/', TestLinkAPIList.as_view(), name = 'test-link-list'),
+    path('auth/', include('djoser.urls')),
+    re_path(r'^auth/', include('djoser.urls.authtoken')),
 ]
