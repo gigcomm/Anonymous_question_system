@@ -44,11 +44,14 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'anonymous_question.apps.Anonymous_questionConfig',
     'rest_framework',
     'rest_framework_swagger',       # Swagger
     'drf_yasg',                      # Yet Another Swagger generator
     'corsheaders',
+    'user',
+    'test_management',
+    'test_result',
+    'test_link',
 
 ]
 
@@ -127,7 +130,8 @@ DATABASES = {
         'PORT': env('POSTGRES_DB_PORT'),
     }
 }
-AUTH_USER_MODEL = 'anonymous_question.User'
+
+AUTH_USER_MODEL = 'user.User'
 
 
 # Password validation
