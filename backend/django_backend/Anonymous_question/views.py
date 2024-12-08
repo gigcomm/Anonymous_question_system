@@ -1,4 +1,5 @@
 from django.shortcuts import render
+from rest_framework.authentication import TokenAuthentication
 from rest_framework.permissions import IsAuthenticated, IsAuthenticatedOrReadOnly
 
 from rest_framework.views import APIView
@@ -19,6 +20,8 @@ class UserAPIList(generics.ListCreateAPIView):
 class TestAPIList(generics.ListCreateAPIView):
     queryset = Test.objects.all()
     serializer_class = TestSerializer
+    permission_classes = (IsAuthenticated, )
+    authentication_classes = (TokenAuthentication,)
 
 
 class AnonymousParticipantView(generics.ListCreateAPIView):
