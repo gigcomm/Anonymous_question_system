@@ -47,11 +47,14 @@ INSTALLED_APPS = [
     'anonymous_question.apps.Anonymous_questionConfig',
     'rest_framework',
     'rest_framework_swagger',       # Swagger
-    'drf_yasg',                    # Yet Another Swagger generator
+    'drf_yasg',                      # Yet Another Swagger generator
     'corsheaders',
     'djoser',
     'rest_framework.authtoken'
-
+    'user',
+    'test_management',
+    'test_result',
+    'test_link',
 
 ]
 
@@ -131,7 +134,7 @@ DATABASES = {
     }
 }
 
-AUTH_USER_MODEL = 'anonymous_question.User'
+AUTH_USER_MODEL = 'user.User'
 
 
 # Password validation

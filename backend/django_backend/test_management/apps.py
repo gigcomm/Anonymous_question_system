@@ -1,6 +1,6 @@
 from django.apps import AppConfig
 
 
-class Anonymous_questionConfig(AppConfig):
+class TestManagementConfig(AppConfig):
     default_auto_field = 'django.db.models.BigAutoField'
-    name = 'anonymous_question'
+    name = 'test_management'
