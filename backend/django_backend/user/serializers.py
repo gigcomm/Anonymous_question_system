@@ -4,7 +4,7 @@ from user.models  import User, AnonymousParticipant, AuthenticatedParticipant
 class UserSerializer(serializers.ModelSerializer):
     class Meta:
         model = User
-        fields = ['id', 'username', 'email']
+        fields = ['id', 'username', 'email', 'password']
 
 
 class AnonymousParticipantSerializer(serializers.ModelSerializer):
