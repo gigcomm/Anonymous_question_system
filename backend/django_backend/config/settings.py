@@ -44,13 +44,12 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'anonymous_question.apps.Anonymous_questionConfig',
     'rest_framework',
     'rest_framework_swagger',       # Swagger
     'drf_yasg',                      # Yet Another Swagger generator
     'corsheaders',
     'djoser',
-    'rest_framework.authtoken'
+    'rest_framework.authtoken',
     'user',
     'test_management',
     'test_result',
