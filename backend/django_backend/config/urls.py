@@ -36,10 +36,13 @@ schema_view = get_schema_view(
 urlpatterns = [
     path('docs/', schema_view.with_ui('swagger', cache_timeout=0), name='schema-swagger-ui'),
     path('admin/', admin.site.urls),
+    path('api-auth/', include('rest_framework.urls')),  # Панель логина DRF
     path("api/user/", include("user.urls")),
     path("api/test-link/", include("test_link.urls")),
     path("api/test/", include("test_management.urls")),
     path("api/test-result/", include("test_result.urls")),
+    path('api/auth/user/', include('djoser.urls')),
+    re_path(r'^auth/', include('djoser.urls.authtoken')),
     re_path(r'^.*$', TemplateView.as_view(template_name="index.html")),
 ] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
 
