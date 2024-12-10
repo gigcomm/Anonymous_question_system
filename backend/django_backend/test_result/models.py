@@ -52,6 +52,13 @@ class ParticipantAnswer(models.Model):
         null=True,
         blank=True
     )
+    test = models.ForeignKey(
+        Test,
+        on_delete=models.CASCADE,
+        related_name='participant_answers',
+        null=True,
+        blank=True
+    )
 
     def __str__(self):
         participant = self.anonymous_participant or self.authenticated_participant
