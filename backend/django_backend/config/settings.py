@@ -44,11 +44,16 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'anonymous_question.apps.Anonymous_questionConfig',
     'rest_framework',
     'rest_framework_swagger',       # Swagger
     'drf_yasg',                      # Yet Another Swagger generator
     'corsheaders',
+    'djoser',
+    'rest_framework.authtoken',
+    'user',
+    'test_management',
+    'test_result',
+    'test_link',
 
 ]
 
@@ -123,10 +128,13 @@ DATABASES = {
         'NAME': env('POSTGRES_DB_NAME'),
         'USER':  env('POSTGRES_DB_USER'),
         'PASSWORD': env('POSTGRES_DB_PASSWORD'),
-        'HOST': 'localhost',
+        'HOST': 'localhost', # 'postgres'
         'PORT': env('POSTGRES_DB_PORT'),
     }
 }
+
+AUTH_USER_MODEL = 'user.User'
+
 
 # Password validation
 # https://docs.djangoproject.com/en/5.1/ref/settings/#auth-password-validators
@@ -168,3 +176,18 @@ STATICFILES_DIRS = [os.path.join(BASE_DIR, 'frontend/build/static')]  # Папк
 # https://docs.djangoproject.com/en/5.1/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+REST_FRAMEWORK = {
+    # 'DEFAULT_RENDERER_CLASSES': (
+    #     'rest_framework.renderers.TemplateHTMLRenderer',  # Для HTML
+    #     'rest_framework.renderers.JSONRenderer',
+    # ),
+    'DEFAULT_AUTHENTICATION_CLASSES': [
+        'rest_framework.authentication.SessionAuthentication',
+        'rest_framework.authentication.BasicAuthentication',
+        'rest_framework.authentication.TokenAuthentication',  # Для токенов
+    ],
+    'DEFAULT_PERMISSION_CLASSES': [
+        'rest_framework.permissions.AllowAny',
+    ],
+}
