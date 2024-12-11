@@ -43,6 +43,7 @@ INSTALLED_APPS = [
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
+    'daphne'
     'django.contrib.staticfiles',
     'rest_framework',
     'rest_framework_swagger',       # Swagger
@@ -54,6 +55,7 @@ INSTALLED_APPS = [
     'test_management',
     'test_result',
     'test_link',
+    'channels'
 
 ]
 
@@ -91,13 +93,15 @@ CORS_ALLOWED_ORIGINS = [
 ]
 
 
-# WSGI_APPLICATION = 'backend.wsgi.application'
 ASGI_APPLICATION = 'django_backend.config.asgi.application'
 
-CHANNELS_LAYERS = {
+CHANNEL_LAYERS = {
     'default': {
-        'BACKEND': 'channels.layers.InMemoryChannelLayer'
-    }
+        'BACKEND': 'channels_redis.core.RedisChannelLayer',
+        'CONFIG': {
+            "hosts": [("localhost", 6379)],  # Замени на данные твоего Redis-сервера
+        },
+    },
 }
 
 CACHES = {
