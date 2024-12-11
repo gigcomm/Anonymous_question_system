@@ -43,7 +43,7 @@ INSTALLED_APPS = [
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
-    'daphne'
+    'daphne',
     'django.contrib.staticfiles',
     'rest_framework',
     'rest_framework_swagger',       # Swagger
@@ -55,7 +55,7 @@ INSTALLED_APPS = [
     'test_management',
     'test_result',
     'test_link',
-    'channels'
+    'channels',
 
 ]
 
