@@ -6,6 +6,7 @@ import Admin from '../pages/Admin';
 import Logout from '../pages/Logout';
 import Com from '../pages/Coment';
 import Create from '../pages/Create';
+import Registr from '../pages/Registr'
 
 export const useRoutes = () => {
 
@@ -16,6 +17,7 @@ export const useRoutes = () => {
       <Route path="/login" element={<Login />} />
       <Route path="/comment" element={<Com />} />
       <Route path="/create" element={<Create />} />
+      <Route path="/registr" element={<Registr />} />
       
       <Route element={<PrivateRoute />}>
         <Route path='/admin' element={<Admin />} />
