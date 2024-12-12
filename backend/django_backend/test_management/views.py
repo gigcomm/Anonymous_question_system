@@ -1,5 +1,6 @@
 from django.shortcuts import render
 from rest_framework import generics
+from rest_framework.permissions import IsAuthenticated
 
 from test_management.models import Test, Question, Answer
 from test_management.serializers import TestSerializer, QuestionSerializer, AnswerSerializer

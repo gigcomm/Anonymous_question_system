@@ -8,6 +8,7 @@ class TestResultAPIList(generics.ListCreateAPIView):
     queryset = TestResult.objects.all()
     serializer_class = TestResultSerializer
 
+
 class ParticipantAnswerAPIList(generics.ListCreateAPIView):
     queryset = ParticipantAnswer.objects.all()
     serializer_class = ParticipantAnswerSerializer
