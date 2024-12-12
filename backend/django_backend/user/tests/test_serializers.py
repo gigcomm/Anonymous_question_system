@@ -1,7 +1,6 @@
 import pytest
-from rest_framework.exceptions import ValidationError
 from user.serializers import UserSerializer, AnonymousParticipantSerializer, AuthenticatedParticipantSerializer
-from user.models import User, AnonymousParticipant, AuthenticatedParticipant
+from user.models import User
 from test_management.models import Test
 
 
