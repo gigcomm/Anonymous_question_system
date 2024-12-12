@@ -5,6 +5,7 @@ class UserSerializer(serializers.ModelSerializer):
     class Meta:
         model = User
         fields = ['id', 'username', 'email', 'password']
+        ref_name = "CustomUserSerializer"
 
 
 class AnonymousParticipantSerializer(serializers.ModelSerializer):
