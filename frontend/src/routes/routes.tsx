@@ -18,9 +18,10 @@ export const useRoutes = () => {
       <Route path="/comment" element={<Com />} />
       <Route path="/create" element={<Create />} />
       <Route path="/registr" element={<Registr />} />
+      <Route path='/admin' element={<Admin />} />
       
       <Route element={<PrivateRoute />}>
-        <Route path='/admin' element={<Admin />} />
+
         <Route path="/logout" element={<Logout />} />
       </Route>
 
