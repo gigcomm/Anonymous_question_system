@@ -9,6 +9,7 @@ class TestLinkSerializer(serializers.ModelSerializer):
         fields = '__all__'
 
     def validate_test(self, value):
+        # Проверяем, активен ли тест
         if not value.is_active:
-            raise ValidationError("Не удается создать ссылку для неактивного теста")
+            raise serializers.ValidationError("Не удается создать ссылку для неактивного теста")
         return value

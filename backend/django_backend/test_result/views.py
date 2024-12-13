@@ -15,6 +15,7 @@ class TestResultDelUpdView(generics.RetrieveUpdateDestroyAPIView):
     serializer_class = TestResultSerializer
     permission_classes = [IsAuthenticatedOrReadOnly]
 
+
 class ParticipantAnswerAPIList(generics.ListCreateAPIView):
     queryset = ParticipantAnswer.objects.all()
     serializer_class = ParticipantAnswerSerializer
