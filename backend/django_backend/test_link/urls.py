@@ -1,8 +1,9 @@
 from django.urls import path, include
 from rest_framework.routers import DefaultRouter
 
-from test_link.views import TestLinkAPIList
+from test_link.views import *
 
 urlpatterns = [
-    path('test-links/', TestLinkAPIList.as_view(), name='test-link-list'),
+    path('', TestLinkAPIList.as_view(), name='test-link-list'),
+    path('<int:pk>/', TestLinkDelUpdView.as_view(), name='test-link-del-upd'),
     ]

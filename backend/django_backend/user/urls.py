@@ -1,4 +1,4 @@
-from .views import UserAPIList, AnonymousParticipantView, AuthenticatedParticipantView
+from .views import *
 from django.urls import path
 from rest_framework.routers import DefaultRouter
 
@@ -8,8 +8,10 @@ from rest_framework.routers import DefaultRouter
 
 urlpatterns = [
     path('', UserAPIList.as_view(), name = 'user-list'),
-    path('<int:pk>/', UserAPIList.as_view(), name = 'user-detail'),
+    path('<int:pk>/', UserDelUpdView.as_view(), name = 'user-detail'),
     path('auth-part/', AuthenticatedParticipantView.as_view(), name = 'authenticated-participant'),
+    path('auth-part/<int:pk>/', AuthParticDelUpdView.as_view(), name = 'auth-partic-del-upd'),
     path('anon/', AnonymousParticipantView.as_view(), name = 'anonymous-participant'),
+    path('anon/<int:pk>/', AnonParicDelUpdView.as_view(), name = 'anon-partic-del-upd'),
 
     ]
