@@ -1,0 +1,9 @@
+.base{
+    height: calc(100vh - 60px);
+    background-image: url('../../public/imgs/blue_back.jpg'); 
+    background-size: cover; 
+    background-position: center; 
+    background-repeat: no-repeat;
+    justify-content: center;
+    align-items: center;
+  }

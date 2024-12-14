@@ -1,4 +1,4 @@
-
+import { Link } from "react-router-dom"
 import './Login.css'
 
 const Login = () => {
@@ -20,10 +20,16 @@ const Login = () => {
           placeholder='Пароль'
         />
         <button className='LoginBtn' type={'button'} onClick={() => {
-        
+
         }}>Войти</button>
-        </div>
-    </div>
+
+        <div className='LoginText1'>Ни разу не посещал нас?</div>
+        <Link to={"/registr"}>
+          <button className='RegBtn' type={'button'} onClick={() => {
+          }}>Зарегестрироваться</button>
+        </Link>
+      </div>
+    </div >
   )
 }
 export default Login

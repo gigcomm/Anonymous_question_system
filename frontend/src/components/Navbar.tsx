@@ -1,5 +1,6 @@
 import { Link } from 'react-router-dom'
 import useAuth from '../hooks/useAuth'
+
 import './Navbar.css'
 import { Container } from 'react-bootstrap'
 import { Component } from 'react'
@@ -9,7 +10,7 @@ function Navbar() {
   const { isAuthenticated } = useAuth()
   return (
     <>
-      <nav>
+      <nav className='Head'>
         <div className="nav-left">
           {/* Иконка сайта слева */}
           <Link to="/">
