@@ -3,11 +3,12 @@ from rest_framework import serializers
 from test_management.models import Test, Question, Answer
 
 class TestSerializer(serializers.ModelSerializer):
-    creator = serializers.HiddenField(default=serializers.CurrentUserDefault())
+    creator = serializers.PrimaryKeyRelatedField(read_only=True)
     
     class Meta:
         model = Test
         fields = '__all__'
+        read_only_fields = ['creator']
 
     def validate(self, data):
         if not data.get('title'):
