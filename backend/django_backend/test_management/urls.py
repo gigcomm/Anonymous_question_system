@@ -11,4 +11,5 @@ urlpatterns = [
     path('quedu/<int:pk>/', TestDelUpdView.as_view(), name='question-del-upd'),
     path('answers/', AnswerAPIList.as_view(), name = 'answer-list'),
     path('ansdu/<int:pk>/', TestDelUpdView.as_view(), name='answer-del-upd'),
+    path('complete_test/<int:test_id>/', complete_test, name='complete_test'), # Для POST-запроса на завершение теста, чтобы в дальнейшем вызвать celery task
     ]
