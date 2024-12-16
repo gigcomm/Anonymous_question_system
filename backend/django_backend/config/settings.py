@@ -121,7 +121,7 @@ CELERY_TASK_TIME_LIMIT = 30 * 60
 CELERY_ACCEPT_CONTENT = ['application/json']
 CELERY_RESULT_SERIALIZER = 'json'
 CELERY_TASK_SERIALIZER = 'json'
-CELERY_TIMEZONE = 'Europe/Moscow'  # UTC
+CELERY_TIMEZONE = 'UTC' #Europe/Moscow
 
 # Database
 # https://docs.djangoproject.com/en/5.1/ref/settings/#databases
