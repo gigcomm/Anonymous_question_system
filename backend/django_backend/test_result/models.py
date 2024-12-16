@@ -19,14 +19,14 @@ class TestResult(models.Model):
     anonymous_participant = models.ForeignKey(
         AnonymousParticipant,
         on_delete=models.CASCADE,
-        related_name='test_results',
+        related_name='anonymous_participant',
         null=True,
         blank=True  # Поле можно оставить пустым для анонимных участников
     )
     authenticated_participant = models.ForeignKey(
         AuthenticatedParticipant,
         on_delete=models.CASCADE,
-        related_name='test_results',
+        related_name='authenticated_participant',
         null=True,
         blank=True,
     )
@@ -52,19 +52,19 @@ class ParticipantAnswer(models.Model):
     selected_option = models.ForeignKey(Answer, on_delete=models.CASCADE,
                                         related_name='chosen_answers')  # Выбранный ответ
     answered_at = models.DateTimeField(auto_now_add=True)  # Время ответа
-    question = models.ForeignKey(Question, on_delete=models.CASCADE, related_name='participant_answers')  # Вопрос
+    question = models.ForeignKey(Question, on_delete=models.CASCADE, related_name='question_answers')  # Вопрос
 
     anonymous_participant = models.ForeignKey(
         AnonymousParticipant,
         on_delete=models.CASCADE,
-        related_name='answers',
+        related_name='anonymous_answers',
         null=True,
         blank=True
     )
     authenticated_participant = models.ForeignKey(
         AuthenticatedParticipant,
         on_delete=models.CASCADE,
-        related_name='answers',
+        related_name='authenticated_answers',
         null=True,
         blank=True
     )
