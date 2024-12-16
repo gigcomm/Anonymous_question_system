@@ -9,6 +9,7 @@ User = get_user_model()
 class APITests(APITestCase):
     def setUp(self):
         self.user = User.objects.create(username="test_user")
+        self.client.force_login(self.user)
         self.test = Test.objects.create(title="Sample Test", creator=self.user)
         self.question = Question.objects.create(text="Sample Question", test=self.test, order=1)
         self.answer = Answer.objects.create(text="Sample Answer", question=self.question)
@@ -17,7 +18,7 @@ class APITests(APITestCase):
         self.answer_url = reverse("answer-list")
 
     def test_create_test(self):
-        data = {"title": "New Test", "creator": self.user.id}
+        data = {"title": "New Test"}
         response = self.client.post(self.test_url, data)
         self.assertEqual(response.status_code, status.HTTP_201_CREATED)
         self.assertEqual(response.data["title"], "New Test")
@@ -28,7 +29,7 @@ class APITests(APITestCase):
         self.assertEqual(len(response.data), 1)
 
     def test_create_question(self):
-        data = {"text": "New Question", "test": self.test.id, "order": "1"}
+        data = {"text": "New Question", "test": self.test.id, "order": 2}
         response = self.client.post(self.question_url, data)
         self.assertEqual(response.status_code, status.HTTP_201_CREATED)
         self.assertEqual(response.data["text"], "New Question")

@@ -1,6 +1,8 @@
 from django.test import TestCase
-from .models import Test, Question, Answer
-from .serializers import TestSerializer, QuestionSerializer, AnswerSerializer
+from test_management.models import Test, Question, Answer
+from test_management.serializers import TestSerializer, QuestionSerializer, AnswerSerializer
+from user.models import User
+
 
 class TestSerializers(TestCase):
 
