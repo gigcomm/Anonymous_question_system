@@ -6,6 +6,7 @@ import { Container } from 'react-bootstrap'
 import { Component } from 'react'
 
 
+
 function Navbar() {
   const { isAuthenticated } = useAuth()
   return (
@@ -14,24 +15,24 @@ function Navbar() {
         <div className="nav-left">
           {/* Иконка сайта слева */}
           <Link to="/">
-            <img src="/imgs/logo.png" className="site-icon" />
+            <div className="site-icon" />
           </Link>
           <h1>Анонимные вопросы</h1>
         </div>
         <div className="nav-right">
           <Link to="/admin">
-            Profile
+            Профиль
           </Link>
           <Link to="/comment">
-             Comments
+             Отзыв
           </Link>
           {isAuthenticated ? (
             <Link to="/logout">
-              <img src="/imgs/logout-icon.png" className="icon" /> Logout
+               Выход
             </Link>
           ) : (
             <Link to="/login">
-              <img src="imgs/login-icon.png" className="icon" /> Login
+               Вход
             </Link>
           )}
         </div>

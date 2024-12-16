@@ -8,9 +8,15 @@ const Login = () => {
             <Link to="/create">
                 <div className="button" id="button-3">
                     <div id="circle"></div>
-                    <a>Создание теста</a>
+                    <a>Создать тест</a>
                 </div>
+
             </Link>
+
+            <div className="button" id="button-3">
+                <div id="circle"></div>
+                <a>Выбрать тест</a>
+            </div>
         </div>
     )
 }
