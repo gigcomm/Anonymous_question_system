@@ -29,6 +29,7 @@ class TestLinkApiAdvancedTestCase(APITestCase):
         self.test_link = TestLink.objects.create(test=self.active_test)
 
     def test_create_test_link_for_inactive_test(self):
+        self.client.force_login(self.user)
         response = self.client.post(
             reverse("test-link-list"),
             data={"test": self.inactive_test.id},
@@ -40,6 +41,7 @@ class TestLinkApiAdvancedTestCase(APITestCase):
         )
 
     def test_create_duplicate_test_link(self):
+        self.client.force_login(self.user)
         #Попытка создать еще одну ссылку для одного и того же активного теста
         response = self.client.post(
             reverse("test-link-list"),
