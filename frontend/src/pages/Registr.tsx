@@ -29,7 +29,7 @@ const Registr = () => {
 
                 }}>Зарегестрироваться</button>
 
-                <div className='LoginText1'>Ни разу не посещал нас?</div>
+                <div className='LoginText1'>Уже были у нас?</div>
                 <Link to={"/login"}>
                     <button className='LoginBtn1' type={'button'} onClick={() => {
                     }}>Войти</button>
