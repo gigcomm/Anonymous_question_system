@@ -1,0 +1,167 @@
+networks:
+  dev:
+
+
+services:
+
+  nginx:
+    container_name: nginx
+    image: nginx:stable-alpine
+    ports:
+      - '${NGINX_HTTP_PORT}:80'
+      - '${NGINX_HTTPS_PORT}:443'
+    volumes:
+      - "./nginx/nginx.conf:/etc/nginx/nginx.conf"
+    restart: always
+    depends_on:
+      - backend
+      - frontend
+    networks:
+      - dev
+
+
+
+  backend:
+    container_name: backend
+    build:
+      context: ./backend
+      dockerfile: Dockerfile
+    environment:
+      POSTGRES_USER: ${POSTGRES_DB_USER}
+      POSTGRES_PASSWORD: ${POSTGRES_DB_PASSWORD}
+      POSTGRES_DB: ${POSTGRES_DB_NAME}
+      POSTGRES_HOST: ${POSTGRES_DB_USER}
+    working_dir: /usr/src/app/backend/django_backend
+    ports:
+      - "8000:8000"
+    env_file:
+      - backend/docker/env/.env.dev
+    volumes:
+      - ./:/usr/src/app
+    depends_on:
+      - postgres
+      - redis
+    command: sh -c "python manage.py makemigrations &&
+      python manage.py migrate &&
+      python manage.py runserver 0.0.0.0:8000"
+    networks:
+      - dev
+
+
+  frontend:
+    container_name: frontend
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile
+    networks:
+      - dev
+
+  redis:
+    image: redis:7.4-alpine
+    container_name: redis
+    env_file:
+      - backend/docker/env/.env.dev
+    ports:
+      - "${REDIS_PORT}:6379"
+    networks:
+      - dev
+
+
+  redis-commander:
+    container_name: redis-commander
+    hostname: redis-commander
+    image: ghcr.io/joeferner/redis-commander:latest
+    restart: always
+    env_file:
+      - backend/docker/env/.env.dev
+    environment:
+      - REDIS_HOSTS=local:redis:6379
+      - HTTP_USER=
+      - ${REDIS_COMMANDER_USER}
+      - HTTP_PASSWORD=${REDIS_COMMANDER_PASS}
+    ports:
+      - "${REDIS_COMMANDER_PORT}:8081"
+    user: redis
+    networks:
+      - dev
+    depends_on:
+      - redis
+
+  postgres:
+    image: postgres:alpine
+    container_name: postgres
+    restart: always
+    env_file:
+      - backend/docker/env/.env.dev
+    environment:
+      POSTGRES_USER: ${POSTGRES_DB_USER}
+      POSTGRES_PASSWORD: ${POSTGRES_DB_PASSWORD}
+      POSTGRES_DB: ${POSTGRES_DB_NAME}
+      POSTGRES_HOST: ${POSTGRES_DB_HOST}
+    ports:
+      - "${POSTGRES_DB_PORT}:5432"
+    volumes:
+      - pgdata:/var/lib/postgresql/data/
+    networks:
+      - dev
+
+  celery-worker:
+    build:
+      context: ./backend
+      dockerfile: Dockerfile
+    container_name: celery-worker
+    restart: always
+    working_dir: /usr/src/app/backend/django_backend
+    env_file:
+      - backend/docker/env/.env.dev
+    volumes:
+      - ./:/usr/src/app
+      - media:/app/media
+    command: celery -A celery_app worker --loglevel=info
+    depends_on:
+      - redis
+      - rabbitmq
+      - backend
+    networks:
+      - dev
+
+  celery-beat:
+    build:
+      context: ./backend
+      dockerfile: Dockerfile
+    container_name: celery-beat
+    restart: always
+    working_dir: /usr/src/app/backend/django_backend
+    env_file:
+      - backend/docker/env/.env.dev
+    volumes:
+      - ./:/usr/src/app
+      - media:/app/media
+    depends_on:
+      - redis
+      - rabbitmq
+      - backend
+    command: celery -A celery_app beat --loglevel=info
+    networks:
+      - dev
+
+  rabbitmq:
+    image: rabbitmq:3.10-management-alpine
+    container_name: rabbitmq
+    hostname: rabbitmq
+    restart: always
+    env_file:
+      - backend/docker/env/.env.dev
+    ports:
+      - "${RABBITMQ_WEB_UI_PORT}:15672"
+      - "${RABBITMQ_PORT}:5672"
+    networks:
+      - dev
+
+
+volumes:
+  pgdata:
+  media:
+
+
+
