@@ -20,7 +20,7 @@ function Navbar() {
         </div>
         <div className="nav-right">
           <Link to="/admin">
-            <img src="/imgs/admin-icon.png" className="icon" /> Admin
+            Profile
           </Link>
           <Link to="/comment">
              Comments
