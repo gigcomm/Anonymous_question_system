@@ -124,3 +124,34 @@
   font-size: 20px;
   user-select: none;
 }
+
+
+button {
+  transition: all 0.3s ease-in-out; /* Плавные переходы для всех свойств */
+}
+
+button:hover {
+  transform: translateY(-3px); /* Поднимает кнопку при наведении */
+  opacity: 0.9;
+}
+
+button:active {
+  transform: scale(0.95); /* Небольшое сжатие при нажатии */
+}
+
+/* Анимация подсветки */
+@keyframes glow {
+  0% {
+    box-shadow: 0 0 5px rgba(0, 0, 255, 0.2);
+  }
+  50% {
+    box-shadow: 0 0 20px rgba(0, 0, 255, 0.6);
+  }
+  100% {
+    box-shadow: 0 0 5px rgba(0, 0, 255, 0.2);
+  }
+}
+
+.add-var, .delet-q, .add-var-q, .save-test {
+  animation: glow 2s infinite alternate; /* Эффект подсветки */
+}

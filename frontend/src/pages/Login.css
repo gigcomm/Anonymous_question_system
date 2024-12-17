@@ -1,7 +1,6 @@
 
 .LoginBase{
     height: calc(100vh - 60px);
-    background-image: url('../../public/imgs/backart.png'); 
     background-size: cover; 
     background-position: center; 
     background-repeat: no-repeat;

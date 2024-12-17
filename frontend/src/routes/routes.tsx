@@ -16,7 +16,8 @@ export const useRoutes = () => {
       <Route path="/" element={<Main />} />
       <Route path="/login" element={<Login />} />
       <Route path="/comment" element={<Com />} />
-
+      <Route path='/admin' element={<Admin />} />
+      <Route path="/create" element={<Create />} />
       <Route path="/registr" element={<Registr />} />
 
 

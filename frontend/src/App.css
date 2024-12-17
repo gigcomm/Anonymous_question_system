@@ -1,6 +1,29 @@
-.Page{
-  margin: 0;
-  padding: 0;
-  border: none;
-  height: 100%;
+.Page {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  background-repeat: repeat-y;
+  background-size: cover;
+  background-position: center; 
+}
+
+.main-content {
+  flex: 1; /* Занимает оставшееся пространство */
+}
+
+
+a {
+  text-decoration: none;
+  font-family: Comic Sans MS, Comic Sans, cursive;
+  font-size: 20px;
+  color: azure;
+}
+
+.footer {
+  text-align: center;
+  padding: 15px 20px;
+  background-color: #1b5074;
+  color: white;
+  font-size: 16px;
+  box-shadow: 0 -2px 4px rgba(0, 0, 0, 0.1); /* Тень сверху */
 }
