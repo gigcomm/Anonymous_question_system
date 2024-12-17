@@ -155,3 +155,24 @@ button:active {
 .add-var, .delet-q, .add-var-q, .save-test {
   animation: glow 2s infinite alternate; /* Эффект подсветки */
 }
+
+
+.delete-option {
+  margin-left: 10px;
+  background-color: #dc3545;
+  color: white;
+  padding: 5px 10px;
+  font-size: 14px;
+  border: none;
+  border-radius: 3px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.delete-option:hover {
+  background-color: #b02a37;
+}
+
+.delete-option:active {
+  background-color: #841d29;
+}
