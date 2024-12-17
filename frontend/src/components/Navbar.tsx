@@ -17,7 +17,7 @@ function Navbar() {
           <Link to="/">
             <div className="site-icon" />
           </Link>
-          <h1>Анонимные вопросы</h1>
+          <h1 className='retroshadow'>Анонимныые Вопросы</h1>
         </div>
         <div className="nav-right">
           <Link to="/admin">

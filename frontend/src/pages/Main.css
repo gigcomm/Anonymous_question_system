@@ -1,53 +1,151 @@
-.button {
-    display: inline-flex;
-    left: 25%;
-    height: 40px;
-    width: 1000px;
-    border: 2px solid #d1d3d3;
-    margin: 20px 20px 20px 20px;
-    color: #0f0f0f;
-    text-transform: uppercase;
-    text-decoration: none;
-    font-size: .8em;
-    letter-spacing: 1.5px;
-    align-items: center;
-    justify-content: center;
-    overflow: hidden;
-  }
+/* Общие стили */
+.main-container {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  min-height: calc(100vh - 60px); /* Учитываем высоту хедера */
+  background: #d9f0ff; /* Светло-синий фон */
+  color: #333;
+  font-family: 'Arial', sans-serif;
+  overflow: hidden;
+  padding: 20px;
+}
 
-  #button-3 {
-    position: relative;
-    overflow: hidden;
-    cursor: pointer;
-  }
-  
-  #button-3 a {
-    position: relative;
-    transition: all .45s ease-Out;
-  }
+/* Основной контент */
+.main-content {
+  position: relative;
+  z-index: 1; /* Поверх анимации */
+}
 
-  #circle {
-    width: 0%;
-    height: 0%;
+/* Заголовок */
+.main-header h1 {
+  font-size: 48px;
+  color: #1b5074;
+  margin-bottom: 10px;
+}
+
+.main-header p {
+  font-size: 20px;
+  color: #555;
+  margin-bottom: 30px;
+}
+
+/* Кнопки */
+.main-buttons {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  margin-bottom: 40px;
+}
+
+.btn {
+  text-decoration: none;
+  padding: 15px 30px;
+  font-size: 18px;
+  font-weight: bold;
+  color: #fff;
+  border-radius: 30px;
+  transition: all 0.3s ease;
+}
+
+.btn-create {
+  background-color: #3498db;
+  box-shadow: 0 4px 6px rgba(52, 152, 219, 0.3);
+}
+
+.btn-view {
+  background-color: #1abc9c;
+  box-shadow: 0 4px 6px rgba(26, 188, 156, 0.3);
+}
+
+.btn:hover {
+  transform: translateY(-3px);
+  opacity: 0.9;
+}
+
+/* Преимущества */
+.features {
+  display: flex;
+  justify-content: center;
+  gap: 30px;
+  flex-wrap: wrap;
+  margin-bottom: 40px;
+}
+
+.feature-card {
+  background: #fff;
+  border-radius: 10px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+  max-width: 250px;
+  text-align: center;
+}
+
+.feature-card h3 {
+  font-size: 20px;
+  margin-bottom: 10px;
+}
+
+.feature-card p {
+  font-size: 16px;
+  color: #555;
+}
+
+/* Статистика */
+.stats p {
+  font-size: 20px;
+  font-weight: bold;
+  color: #1b5074;
+}
+
+/* Фоновая анимация */
+.background-animation {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 0; /* За основным контентом */
+  overflow: hidden;
+}
+
+.circle {
+  position: absolute;
+  border-radius: 50%;
+  background: rgba(175, 193, 231, 0.822);
+  animation: float 10s infinite ease-in-out;
+}
+
+.circle.small {
+  width: 50px;
+  height: 50px;
+  animation-duration: 8s;
+}
+
+.circle.medium {
+  width: 100px;
+  height: 100px;
+  animation-duration: 12s;
+}
+
+.circle.large {
+  width: 150px;
+  height: 150px;
+  animation-duration: 15s;
+}
+
+@keyframes float {
+  0% {
+    transform: translateY(100%) translateX(0);
     opacity: 0;
-    line-height: 40px;
-    border-radius: 50%;
-    background: #cfcbcb;
-    position: absolute;
-    transition: all .5s ease-Out;
-    top: 20px;
-    left: 70px;
   }
-  
-  #button-3:hover #circle {
-    width: 200%;
-    height: 500%;
+  50% {
     opacity: 1;
-    top: -70px;
-    left: -70px;
   }
-  
-  #button-3:hover a {
-    color: #2D3142;
+  100% {
+    transform: translateY(-100%) translateX(20%);
+    opacity: 0;
   }
-  
+}

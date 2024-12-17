@@ -1,56 +1,88 @@
-.Head{
-  background-color: #1b5074;
+/* Общие стили */
+.Head {
+  background: linear-gradient(135deg, #1b5074, #3c8dbc); /* Градиентный фон */
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3); /* Тень под хедером */
+  position: sticky;
+  top: 0;
+  z-index: 1000;
 }
 
+/* Контейнер навигации */
 nav {
-    height: 60px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center; /* Центрируем по вертикали */
-    padding-right: 20px; /* Отступ справа */
-    background-image: url()
+  height: 70px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 30px;
+  transition: all 0.3s ease-in-out;
+}
+
+/* Левый блок: иконка и заголовок */
+.nav-left {
+  display: flex;
+  align-items: center;
+}
+
+.site-icon {
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-image: url('../../public/imgs/logo.png');
+  width: 50px;
+  height: 50px;
+  border-radius: 50%; /* Скруглённая иконка */
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3); /* Тень иконки */
+  margin-right: 15px;
+}
+
+.retroshadow {
+  font-size: 32px;
+  color: #fff;
+  font-family: 'Arial Black', sans-serif;
+  letter-spacing: 2px;
+  text-shadow: 
+    2px 2px 0px #05253a,
+    4px 4px 0px rgba(0, 0, 0, 0.2);
+}
+
+/* Правый блок: ссылки */
+.nav-right {
+  display: flex;
+  gap: 20px; /* Отступы между ссылками */
+}
+
+nav a {
+  color: #fff;
+  text-decoration: none;
+  font-size: 18px;
+  font-weight: bold;
+  padding: 10px 15px;
+  border-radius: 5px;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+nav a:hover {
+  background-color: rgba(255, 255, 255, 0.2);
+  color: #a3f7bf; /* Светло-зелёный цвет при наведении */
+}
+
+nav a:active {
+  color: #82e6d0;
+}
+
+/* Адаптивность для мобильных устройств */
+@media (max-width: 768px) {
+  nav {
+    flex-direction: column;
+    height: auto;
+    padding: 15px;
   }
-  .nav-right {
-    display: flex;
-    justify-content: flex-end;
-    align-items: center;
-  }
+
   .nav-left {
-    display: flex;
-    align-items: center;
+    margin-bottom: 15px;
   }
 
-  nav a {
-    color: white; /* Цвет текста ссылок */
-    text-decoration: none; /* Убираем подчёркивание */
-    font-size: 18px; /* Размер шрифта */
-    margin-left: 30px; /* Отступы между ссылками */
-    font-family: 'Arial', sans-serif; /* Изменим шрифт */
-    display: flex;
-    align-items: center; /* Для выравнивания иконок и текста */
-    transition: color 0.3s ease; /* Плавное изменение цвета при наведении */
+  .nav-right {
+    flex-direction: column;
+    gap: 10px;
   }
-  
-  nav a:hover {
-    color: aquamarine; /* Цвет при наведении */
-  }
-  
-  .icon {
-    margin-right: 8px; /* Отступ между иконкой и текстом */
-    width: 30px; 
-    height: 30px;
-  }
-  
-  nav a:visited {
-    color: white; /* Отключаем синий цвет после посещения ссылки */
-  }
-
-  .site-icon {
-    background-size: cover;
-    background-repeat: no-repeat;
-    justify-content: center;
-    align-items: center;
-    background-image: url('../../public/imgs/logo.png');
-    width: 50px; 
-    height: 50px;
-  }
+}

@@ -42,11 +42,11 @@ const Admin: React.FC<UserProfileProps> = ({ username, registrationDate, created
 
 const App: React.FC = () => {
   const mockUserData = {
-    username: 'Иван Иванов',
-    registrationDate: '2023-12-01',
+    username: 'Кущенко Влад',
+    registrationDate: '2023-12-16',
     createdTests: [
-      { id: 1, title: 'Тест по математике', createdAt: '2023-12-05' },
-      { id: 2, title: 'Тест по истории', createdAt: '2023-12-10' },
+      { id: 1, title: 'Тест по ТимПрог', createdAt: '2023-12-17' },
+      { id: 2, title: 'Тест по Аниме', createdAt: '2023-12-18' },
     ],
   };
 
