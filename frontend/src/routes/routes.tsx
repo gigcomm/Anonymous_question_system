@@ -6,7 +6,6 @@ import Admin from '../pages/Admin';
 import Logout from '../pages/Logout';
 import Com from '../pages/Coment';
 import Create from '../pages/Create';
-import Registr from '../pages/Registr'
 import Questions from '../pages/questions';
 import Answer from '../pages/answers';
 
@@ -20,14 +19,13 @@ export const useRoutes = () => {
       <Route path="/comment" element={<Com />} />
       <Route path='/admin' element={<Admin />} />
       <Route path="/create" element={<Create />} />
-      <Route path="/registr" element={<Registr />} />
       <Route path="/questions" element={<Questions />} />
       <Route path="/answer" element={<Answer />} />
 
 
       <Route element={<PrivateRoute />}>
-        <Route path='/admin' element={<Admin />} />
-        <Route path="/create" element={<Create />} />
+        {/* <Route path='/admin' element={<Admin />} /> */}
+        {/* <Route path="/create" element={<Create />} /> */}
         <Route path="/logout" element={<Logout />} />
       </Route>
 
