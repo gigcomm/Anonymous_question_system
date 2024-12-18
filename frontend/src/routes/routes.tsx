@@ -17,15 +17,13 @@ export const useRoutes = () => {
       <Route path="/" element={<Main />} />
       <Route path="/login" element={<Login />} />
       <Route path="/comment" element={<Com />} />
-      <Route path='/admin' element={<Admin />} />
-      <Route path="/create" element={<Create />} />
       <Route path="/questions" element={<Questions />} />
       <Route path="/answer" element={<Answer />} />
 
 
       <Route element={<PrivateRoute />}>
-        {/* <Route path='/admin' element={<Admin />} /> */}
-        {/* <Route path="/create" element={<Create />} /> */}
+        <Route path='/admin' element={<Admin />} />
+        <Route path="/create" element={<Create />} />
         <Route path="/logout" element={<Logout />} />
       </Route>
 

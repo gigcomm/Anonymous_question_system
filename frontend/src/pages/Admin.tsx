@@ -1,63 +1,99 @@
-
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
-import './Admin.css';
+import './Admin.css'; // Подключение CSS-стилей
 
-type Test = {
-  id: number;
+// Определяем тип для теста
+interface Test {
   title: string;
   createdAt: string;
+  creator: number;
 };
 
-type UserProfileProps = {
+interface UserProfileProps {
   username: string;
   registrationDate: string;
-};
+}
 
-const Admin: React.FC<UserProfileProps> = ({ username, registrationDate}) => {
+const Admin: React.FC<UserProfileProps> = ({ username, registrationDate }) => {
   const [createdTests, setCreatedTests] = useState<Test[]>([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
 
   useEffect(() => {
-    const fetchTests = async () => {
+    const fetchUserAndTests = async () => {
       try {
-        const response = await axios.get('http://127.0.0.1:8000/api/test/');
-        const tests = response.data.map((item: any) => ({
-          id: item.id,
-          title: item.title,
-          createdAt: item.created_at,
-        }));
-        setCreatedTests(tests);
+        // Получение данных о текущем пользователе через токен
+        const token = localStorage.getItem('authToken'); // Замените на способ хранения токена в вашем приложении
+        if (!token) {
+          setError('Токен авторизации отсутствует');
+          setLoading(false);
+          return;
+        }
+
+        const userResponse = await axios.get('http://127.0.0.1:8000/api/auth/users/me/', {
+          headers: { Authorization: `Token ${token}` },
+        });
+
+        const currentUser = userResponse.data;
+        const userId = currentUser.id;
+
+        // Получение и фильтрация тестов
+        const testsResponse = await axios.get('http://127.0.0.1:8000/api/test/', {
+          headers: { Authorization: `Token ${token}` },
+        });
+
+        const filteredTests = testsResponse.data
+          .filter((test: any) => test.creator === userId)
+          .map((item: any) => ({
+            id: item.id,
+            title: item.title,
+            createdAt: item.created_at,
+            creator: item.creator,
+          }));
+
+        setCreatedTests(filteredTests);
         setLoading(false);
       } catch (err) {
-        setError('Ошибка загрузки тестов');
+        setError('Ошибка загрузки данных');
         setLoading(false);
       }
     };
 
-    fetchTests();
+    fetchUserAndTests();
   }, []);
 
+  // Рендеринг
   return (
     <div className="profile-container">
       <h1 className="profile-header">Профиль пользователя</h1>
+
+      {userError ? (
+        <p className="error">{userError}</p>
+      ) : !user ? (
+        <p className="loading">Загрузка данных пользователя...</p>
+      ) : (
+        <div className="profile-info">
+          <h2>Имя пользователя: {user.username}</h2>
+          <p>Дата регистрации: {user.registrationDate}</p>
+        </div>
+      )}
+
       <div>
-      <div className="profile-info">
-        <h2>Имя пользователя: {username}</h2>
-        <p>Дата регистрации: {registrationDate}</p>
-      </div>
+        <div className="profile-info">
+          <h2>Имя пользователя: {username}</h2>
+          <p>Дата регистрации: {registrationDate}</p>
+        </div>
         <h2>История созданных тестов</h2>
         {loading ? (
-          <p>Загрузка...</p>
+          <p className="loading">Загрузка...</p>
         ) : error ? (
-          <p>{error}</p>
-        ) : createdTests.length > 0 ? (
+          <p className="error">{error}</p>
+        ) : tests.length > 0 ? (
           <ul className="tests-list">
-            {createdTests.map((test) => (
-              <li key={test.id} className="test-item">
+            {tests.map((test) => (
+              <li key={test.title} className="test-item">
                 <h3>{test.title}</h3>
-                <p>Дата создания: {test.createdAt}</p>
+                <p>Дата создания: {test.created_at}</p>
               </li>
             ))}
           </ul>
@@ -77,6 +113,5 @@ const App: React.FC = () => {
 
   return <Admin {...mockUserData} />;
 };
-
 
 export default App;

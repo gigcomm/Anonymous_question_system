@@ -195,3 +195,12 @@ REST_FRAMEWORK = {
         'rest_framework.permissions.AllowAny',
     ],
 }
+
+
+# # Отключить CSRF защиту
+# CSRF_COOKIE_SECURE = False
+# CSRF_COOKIE_HTTPONLY = False
+# CSRF_USE_SESSIONS = False
+
+# # Отключение CSRF защиты для всех вьюшек
+# CSRF_TRUSTED_ORIGINS = ['http://127.0.0.1:3000']  # Ваш фронтенд

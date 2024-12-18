@@ -8,21 +8,21 @@ from rest_framework import status, viewsets, generics
 from user.serializers import UserSerializer, AnonymousParticipantSerializer, AuthenticatedParticipantSerializer
 from user.models import User, AnonymousParticipant, AuthenticatedParticipant
 
-from rest_framework.permissions import IsAuthenticatedOrReadOnly
+from rest_framework.permissions import *
 
 
 class UserAPIList(generics.ListCreateAPIView):
     queryset = User.objects.all()
     serializer_class = UserSerializer
-    permission_classes = [IsAuthenticatedOrReadOnly]
+    permission_classes = [AllowAny]
 
 class UserDelUpdView(generics.RetrieveUpdateDestroyAPIView):
     queryset = User.objects.all()
     serializer_class = UserSerializer
-    permission_classes = [IsAuthenticatedOrReadOnly]
+    permission_classes = [AllowAny]
 
 class UserView(View):
-    permission_classes = [IsAuthenticatedOrReadOnly]
+    permission_classes = [AllowAny]
 
     def get(self, request, pk=None):
         if pk:
