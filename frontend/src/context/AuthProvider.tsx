@@ -1,29 +1,51 @@
-import { createContext, useState } from "react";
+import { createContext, useState, useEffect } from "react";
 
-// Определяем тип контекста
 type AuthContextType = {
-  isAuthenticated: boolean; 
-  setAuth: (auth: boolean) => void; // функция для изменения значения isAuthenticated
+  isAuthenticated: boolean;
+  setAuth: (auth: boolean) => void;
+  logout: () => void;
+  loading: boolean;
 };
 
-// Создаем контекст с типом AuthContextType и начальными значениями по умолчанию
 const AuthContext = createContext<AuthContextType>({
   isAuthenticated: false,
-  setAuth: () => { },
+  setAuth: () => {},
+  logout: () => {},
+  loading: true
 });
 
-// Создаем компонент провайдера, который предоставляет данные контекста всем дочерним компонентам
-export const AuthProvider = ({ children }: { children: JSX.Element }) => {
-  // Используем хук useState для создания переменной isAuthenticated и функции setAuth для ее изменения
-  const [isAuthenticated, setAuth] = useState<boolean>(false);
-  
-  // Возвращаем контекст провайдера, передавая значения isAuthenticated и setAuth в качестве значения контекста
+export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
+  const [isAuthenticated, setIsAuthenticated] = useState<boolean>(false);
+  const [loading, setLoading] = useState<boolean>(true);
+
+  // Восстанавливаем авторизацию из localStorage при загрузке
+  useEffect(() => {
+    const token = localStorage.getItem("authToken");
+    if (token) {
+      setIsAuthenticated(true);
+    }
+    setLoading(false); // Когда проверка завершилась, меняем loading на false
+  }, []);
+
+  const setAuth = (auth: boolean) => {
+    if (auth) {
+      // Сохраняем токен, если есть необходимость, уже сделано где-то в логине
+    } else {
+      localStorage.removeItem("authToken");
+    }
+    setIsAuthenticated(auth);
+  };
+
+  const logout = () => {
+    localStorage.removeItem("authToken");
+    setIsAuthenticated(false);
+  };
+
   return (
-    <AuthContext.Provider value={{ isAuthenticated, setAuth }}>
+    <AuthContext.Provider value={{ isAuthenticated, setAuth, logout, loading }}>
       {children}
     </AuthContext.Provider>
   );
 };
 
 export default AuthContext;
-

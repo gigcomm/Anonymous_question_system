@@ -1,5 +1,7 @@
 import React, { useState } from 'react';
-import './Create.css'
+import './Create.css';
+import { Link } from 'react-router-dom';
+
 
 type Question = {
   id: number;
@@ -46,20 +48,29 @@ const Create: React.FC = () => {
     );
   };
 
+  const deleteOption = (id: number, optionIndex: number) => {
+    setQuestions((prevQuestions) =>
+      prevQuestions.map((q) => {
+        if (q.id === id && q.options) {
+          const updatedOptions = q.options.filter((_, index) => index !== optionIndex);
+          return { ...q, options: updatedOptions };
+        }
+        return q;
+      })
+    );
+  };
+
   const deleteQuestion = (id: number) => {
     setQuestions((prevQuestions) => prevQuestions.filter((q) => q.id !== id));
   };
 
   const handleSave = () => {
-    console.log({ title, description, questions });
-    alert('Тест сохранен!');
+
   };
 
   return (
-    <div className='base'>
-
-      <div style={{ maxWidth: '1000px', margin: '0 auto', padding: '20px', fontFamily: 'Arial, sans-serif' }}>
-
+    <div className="base">
+      <div className="Test" style={{ maxWidth: '1000px', margin: '0 auto', padding: '20px', fontFamily: 'Arial, sans-serif' }}>
         <h1 style={{ textAlign: 'center', fontSize: '40px' }}>Создание теста</h1>
 
         <div style={{ marginBottom: '20px' }}>
@@ -77,22 +88,6 @@ const Create: React.FC = () => {
             onChange={(e) => setDescription(e.target.value)}
             style={{ width: '100%', padding: '10px', fontSize: '16px', height: '80px' }}
           />
-          <label className="container">Анонимность теста
-            <input type="checkbox" />
-            <span className="checkmark"></span>
-          </label>
-          <label className="container">Рандомизация теста
-            <input type="checkbox" />
-            <span className="checkmark"></span>
-          </label>
-
-          <label className='Text'>Время на вопрос   </label>
-                <select id="phone" name="phone">
-                    <option value="no">нет</option>
-                    <option value="15">15 сек</option>
-                    <option value="30">30 сек</option>
-                    <option value="60">60 сек</option>
-                </select>
         </div>
         <div>
           {questions.map((q) => (
@@ -107,7 +102,7 @@ const Create: React.FC = () => {
               }}
             >
               <input
-                className='text-q'
+                className="text-q"
                 type="text"
                 placeholder="Введите текст вопроса"
                 value={q.questionText}
@@ -116,7 +111,7 @@ const Create: React.FC = () => {
               {q.type === 'multiple-choice' && q.options && (
                 <div>
                   {q.options.map((option, index) => (
-                    <div key={index} style={{ marginBottom: '5px' }}>
+                    <div key={index} style={{ display: 'flex', alignItems: 'center', marginBottom: '5px' }}>
                       <input
                         type="text"
                         placeholder={`Вариант ${index + 1}`}
@@ -124,10 +119,17 @@ const Create: React.FC = () => {
                         onChange={(e) => handleQuestionChange(q.id, 'optionText', e.target.value, index)}
                         style={{ width: '80%', padding: '8px', fontSize: '14px' }}
                       />
+                      <button
+                        type="button"
+                        className="delete-option"
+                        onClick={() => deleteOption(q.id, index)}
+                      >
+                        Удалить
+                      </button>
                     </div>
                   ))}
                   <button
-                    className='add-var'
+                    className="add-var"
                     type="button"
                     onClick={() => addOption(q.id)}
                   >
@@ -136,7 +138,7 @@ const Create: React.FC = () => {
                 </div>
               )}
               <button
-                className='delet-q'
+                className="delet-q"
                 type="button"
                 onClick={() => deleteQuestion(q.id)}
               >
@@ -147,23 +149,21 @@ const Create: React.FC = () => {
         </div>
         <div>
           <button
-            className='add-var-q'
+            className="add-var-q"
             type="button"
             onClick={() => addQuestion('multiple-choice')}
           >
             Добавить вопрос с вариантами
           </button>
         </div>
-        <button
-          className='save-test'
-          onClick={handleSave}
-        >
-          Сохранить тест
-        </button>
+        <Link to="/questions">
+          <button className="save-test" onClick={handleSave}>
+            Создать тест
+          </button>
+        </Link>
       </div>
     </div>
   );
 };
 
-
-export default Create
+export default Create;

@@ -1,10 +1,11 @@
 import { Link } from 'react-router-dom'
-import useAuth from '../hooks/useAuth'
+//import useAuth from '../hooks/useAuth'
+import useAuth  from "../hooks/useAuth";
+
 
 import './Navbar.css'
 import { Container } from 'react-bootstrap'
 import { Component } from 'react'
-
 
 
 function Navbar() {
@@ -17,7 +18,7 @@ function Navbar() {
           <Link to="/">
             <div className="site-icon" />
           </Link>
-          <h1 className='retroshadow'>Анонимныые Вопросы</h1>
+          <h1 className='retroshadow'>Анонимные Вопросы</h1>
         </div>
         <div className="nav-right">
           <Link to="/admin">
