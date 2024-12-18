@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import './Create.css';
+import { Link } from 'react-router-dom';
 
 
 type Question = {
@@ -64,13 +65,12 @@ const Create: React.FC = () => {
   };
 
   const handleSave = () => {
-    console.log({ title, description, questions });
-    alert('Тест сохранен!');
+
   };
 
   return (
     <div className="base">
-      <div style={{ maxWidth: '1000px', margin: '0 auto', padding: '20px', fontFamily: 'Arial, sans-serif' }}>
+      <div className="Test" style={{ maxWidth: '1000px', margin: '0 auto', padding: '20px', fontFamily: 'Arial, sans-serif' }}>
         <h1 style={{ textAlign: 'center', fontSize: '40px' }}>Создание теста</h1>
 
         <div style={{ marginBottom: '20px' }}>
@@ -156,9 +156,11 @@ const Create: React.FC = () => {
             Добавить вопрос с вариантами
           </button>
         </div>
-        <button className="save-test" onClick={handleSave}>
-          Сохранить тест
-        </button>
+        <Link to="/questions">
+          <button className="save-test" onClick={handleSave}>
+            Создать тест
+          </button>
+        </Link>
       </div>
     </div>
   );

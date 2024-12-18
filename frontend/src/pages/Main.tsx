@@ -28,7 +28,7 @@ const Main: React.FC = () => {
                         </Link>
                     </a>
                     <a className="btn btn-view">
-                        <Link to="">
+                        <Link to="/answer">
                             🔍 Подключиться к тесту
                         </Link>
                     </a>

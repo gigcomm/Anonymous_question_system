@@ -6,6 +6,14 @@
   background-position: center; 
   justify-content: center;
   align-items: center;
+  display: flex;
+  flex-direction: row ;
+
+}
+
+.Test{
+  flex: 1; /* Занимает всё доступное пространство */
+  box-sizing: border-box; /* Учитываем отступы в общей ширине */
 }
 
 .add-var {
