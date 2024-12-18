@@ -12,11 +12,11 @@ export interface RegisterResult {
 }
 
 export class AuthService {
-  private static API_BASE_URL = "/auth";
+  private static API_BASE_URL = "http://127.0.0.1:8000";
 
-  static async login(username: string, password: string): Promise<LoginResult> {
+  static async login(username: string,password: string): Promise<LoginResult> {
     try {
-      const response = await apiClient.post(`${this.API_BASE_URL}/token/login/`, {
+      const response = await apiClient.post(`http://127.0.0.1:8000/auth/token/login/`, {
         username,
         password,
       });
@@ -35,10 +35,10 @@ export class AuthService {
     email: string
   ): Promise<RegisterResult> {
     try {
-      await apiClient.post(`${this.API_BASE_URL}/users/`, {
+      await apiClient.post(`http://127.0.0.1:8000/api/auth/users/`, {
         username,
         password,
-        email,
+        email
       });
 
       return { success: true };
