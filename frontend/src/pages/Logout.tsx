@@ -8,6 +8,7 @@ function Logout() {
   
   useEffect(() => {
     setAuth(false)
+    localStorage.removeItem("authToken")
     navigate('/');
   }, [setAuth, navigate])
 
