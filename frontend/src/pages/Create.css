@@ -176,3 +176,7 @@ button:active {
 .delete-option:active {
   background-color: #841d29;
 }
+
+.check{
+  background-color: #841d29;
+}

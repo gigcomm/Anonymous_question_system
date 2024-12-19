@@ -92,6 +92,7 @@ const Create: React.FC = () => {
         <div className='Text'>
           <label>Таймер: </label>
           <select id="time" name="time">
+            <option disabled selected value=""> -- Выберите время -- </option>
             <option value="not">Без ограничения</option>
             <option value="15sec">15 сек</option>
             <option value="30sec">30 сек</option>
@@ -99,7 +100,7 @@ const Create: React.FC = () => {
           </select>
         </div>
         <div className='Text'>  
-        <input type="checkbox" id="Anon"/>
+        <input type="checkbox" id="Anon"/> 
           <label>Анонимность теста </label>
         </div>
         <div>
@@ -132,6 +133,7 @@ const Create: React.FC = () => {
                         onChange={(e) => handleQuestionChange(q.id, 'optionText', e.target.value, index)}
                         style={{ width: '80%', padding: '8px', fontSize: '14px' }}
                       />
+                       <input className="check" type="checkbox" id="check"/>
                       <button
                         type="button"
                         className="delete-option"
