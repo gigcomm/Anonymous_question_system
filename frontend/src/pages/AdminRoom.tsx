@@ -13,12 +13,17 @@ type Participant = {
    wsUrl: string; // URL WebSocket сервера
  };
 
-const AdminRoom: React.FC<AdminRoomProps> = ({ testId, wsUrl }) => { //{ testId, wsUrl } вообще переменные сюда передавать вместо затычек
+
+const AdminRoom: React.FC = () => { //  React.FC<AdminRoomProps> = ({ testId, wsUrl })
   const navigate = useNavigate();
   const [participants, setParticipants] = useState<Participant[]>([]);
   const [testLink, setTestLink] = useState('');
   const wsRef = useRef<WebSocket | null>(null);
  
+
+  //затычка
+  const testId =1;
+  const wsUrl = "Hello";
 
 
   useEffect(() => {
