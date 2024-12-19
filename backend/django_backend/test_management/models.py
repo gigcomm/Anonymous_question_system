@@ -11,8 +11,7 @@ class Test(models.Model):
     is_active = models.BooleanField(default=True)  # Активен ли тест
     is_anonymous = models.BooleanField(default=True)  # Флаг анонимности теста
     is_completed = models.BooleanField(default=False)  # Статус завершения теста
-    default_time_limit = models.PositiveIntegerField(default=30,
-                                                     help_text="Default time limit for each question in seconds.")
+    default_time_limit = models.PositiveIntegerField(default=30,help_text="Default time limit for each question in seconds.")
     creator = models.ForeignKey(User, on_delete=models.CASCADE, related_name='created_tests')  # Создатель теста
 
     def complete(self):
