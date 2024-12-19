@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
+import { Link } from 'react-router-dom';
 import './Admin.css';
 
 type Test = {
@@ -69,6 +70,7 @@ const Admin: React.FC<UserProfileProps> = ({ username, registrationDate }) => {
         <div className="profile-info">
           <h2>Имя пользователя: {username}</h2>
           <p>Дата регистрации: {registrationDate}</p>
+          <button><Link to="/testResults">TEST</Link></button>
         </div>
         <h2>История созданных тестов</h2>
         {loading ? (

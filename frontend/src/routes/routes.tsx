@@ -10,6 +10,7 @@ import Test from '../pages/Test';
 import Answer from '../pages/answers';
 import WaitingRoom from '../pages/WaitingRoom';
 import AdminRoom from '../pages/AdminRoom';
+import TestResults from '../pages/TestResults';
 
 export const useRoutes = () => {
 
@@ -23,6 +24,7 @@ export const useRoutes = () => {
       <Route path="/answer" element={<Answer />} />
       <Route path="/waitingRoom" element={<WaitingRoom />} />
       <Route path="/adminRoom" element={<AdminRoom />} />
+      <Route path="/testResults" element={<TestResults />} />
       
       <Route path='/admin' element={<Admin />} />
       <Route path="/create" element={<Create />} />
