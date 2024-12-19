@@ -102,7 +102,7 @@ const Create: React.FC = () => {
         <input type="checkbox" id="Anon"/>
           <label>Анонимность теста </label>
         </div>
-        <div className='container'>
+        <div>
           {questions.map((q) => (
             <div
               key={q.id}

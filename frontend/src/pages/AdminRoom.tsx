@@ -79,7 +79,7 @@ const AdminRoom: React.FC = () => { //  React.FC<AdminRoomProps> = ({ testId, ws
   };
 
   const startTest = () => {
-    //wsRef.current?.send(JSON.stringify({ action: 'startTest', testId })); --это веб сокет ---
+    wsRef.current?.send(JSON.stringify({ action: 'startTest', testId })); 
     alert('Тест начался!');
     navigate(`/test`);  /// добавить если что${testId}
     window.location.href = `/test`; // --это веб сокет ---  добавить если что${testId}
