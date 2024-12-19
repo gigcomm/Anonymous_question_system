@@ -1,7 +1,10 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import './Admin.css';
+import './Admin.css';
 
+type Test = {
+  id: number;
 type Test = {
   id: number;
   title: string;
@@ -76,10 +79,15 @@ const Admin: React.FC = () => {
         <h2>История созданных тестов</h2>
         {loading ? (
           <p>Загрузка...</p>
+          <p>Загрузка...</p>
         ) : error ? (
           <p>{error}</p>
         ) : createdTests.length > 0 ? (
+          <p>{error}</p>
+        ) : createdTests.length > 0 ? (
           <ul className="tests-list">
+            {createdTests.map((test) => (
+              <li key={test.id} className="test-item">
             {createdTests.map((test) => (
               <li key={test.id} className="test-item">
                 <h3>{test.title}</h3>

@@ -65,7 +65,7 @@ const Create: React.FC = () => {
   };
 
   const handleSave = () => {
-
+    //сохранение данных теста
   };
 
   return (
@@ -89,7 +89,20 @@ const Create: React.FC = () => {
             style={{ width: '100%', padding: '10px', fontSize: '16px', height: '80px' }}
           />
         </div>
-        <div>
+        <div className='Text'>
+          <label>Таймер: </label>
+          <select id="time" name="time">
+            <option value="not">Без ограничения</option>
+            <option value="15sec">15 сек</option>
+            <option value="30sec">30 сек</option>
+            <option value="60sec">60 сек</option>
+          </select>
+        </div>
+        <div className='Text'>  
+        <input type="checkbox" id="Anon"/>
+          <label>Анонимность теста </label>
+        </div>
+        <div className='container'>
           {questions.map((q) => (
             <div
               key={q.id}
@@ -156,7 +169,7 @@ const Create: React.FC = () => {
             Добавить вопрос с вариантами
           </button>
         </div>
-        <Link to="/questions">
+        <Link to="/adminRoom">
           <button className="save-test" onClick={handleSave}>
             Создать тест
           </button>

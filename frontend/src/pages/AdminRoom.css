@@ -1,0 +1,90 @@
+.admin-room {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 20px;
+  font-family: Arial, sans-serif;
+  width: 100%; 
+  height: auto;
+  overflow: visible;
+  padding: 20px;
+}
+
+.link-container {
+  display: flex;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.test-link {
+  flex: 1;
+  padding: 10px;
+  font-size: 16px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  margin-right: 10px;
+  cursor: pointer;
+}
+
+.copy-link-btn {
+  padding: 10px 20px;
+  font-size: 16px;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.copy-link-btn:hover {
+  background-color: #0056b3;
+}
+
+ul {
+  list-style: none;
+  padding: 0;
+}
+
+li {
+  margin-bottom: 10px;
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.toggle-ready-btn {
+  padding: 5px 10px;
+  font-size: 14px;
+  background-color: #28a745;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.toggle-ready-btn:hover {
+  background-color: #218838;
+}
+
+.toggle-ready-btn:not(:last-child) {
+  margin-right: 10px;
+}
+
+
+.start-test-btn {
+  padding: 10px 20px;
+  font-size: 18px;
+  background-color: #4caf50;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  margin-top: 20px;
+}
+
+.start-test-btn:disabled {
+  background-color: #cccccc;
+  cursor: not-allowed;
+}

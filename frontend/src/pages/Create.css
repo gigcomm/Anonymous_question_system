@@ -1,9 +1,5 @@
 .base{
   height: calc(100vh - 60px);
-  background-image: url('../../public/imgs/blue_back.jpg'); 
-  background-repeat: repeat-y;
-  background-size: cover; 
-  background-position: center; 
   justify-content: center;
   align-items: center;
   width: 100%; 
