@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
-import './questions.css';
+import './Test.css';
 
-const Questions = () => {
+const Test = () => {
   const [currentQuestion, setCurrentQuestion] = useState(0);
   const [showParticipants, setShowParticipants] = useState(false);
 
@@ -74,4 +74,4 @@ const Questions = () => {
   );
 };
 
-export default Questions;
+export default Test;
