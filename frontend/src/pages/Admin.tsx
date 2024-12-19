@@ -83,7 +83,7 @@ const Admin: React.FC = () => {
             {createdTests.map((test) => (
               <li key={test.id} className="test-item">
                 <h3>{test.title}</h3>
-                <p>Дата создания: {test.createdAt.getUTCDate().toLocaleString()}</p>
+                <p>Дата создания: {test.createdAt.toLocaleString('ru-RU')}</p>
                 <p>Описание: {test.description}</p>
               </li>
             ))}
