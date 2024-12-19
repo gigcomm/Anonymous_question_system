@@ -1,0 +1,44 @@
+.admin-room {
+    font-family: Arial, sans-serif;
+    max-width: 600px;
+    margin: 20px auto;
+    text-align: center;
+  }
+  
+  .participant-list {
+    list-style: none;
+    padding: 0;
+  }
+  
+  .participant {
+    padding: 10px;
+    margin: 5px 0;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    background: #f9f9f9;
+  }
+  
+  .participant.ready {
+    background: #d4edda;
+    border-color: #c3e6cb;
+  }
+  
+  .participant.not-ready {
+    background: #f8d7da;
+    border-color: #f5c6cb;
+  }
+  
+  .btn-start-test {
+    padding: 10px 20px;
+    font-size: 16px;
+    background: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+  
+  .btn-start-test:hover {
+    background: #0056b3;
+  }
+  

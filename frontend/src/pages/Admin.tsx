@@ -1,18 +1,18 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
-import './Admin.css'; // Подключение CSS-стилей
+import './Admin.css';
 
-// Определяем тип для теста
-interface Test {
+type Test = {
+  id: number;
   title: string;
   createdAt: string;
   creator: number;
 };
 
-interface UserProfileProps {
+type UserProfileProps = {
   username: string;
   registrationDate: string;
-}
+};
 
 const Admin: React.FC<UserProfileProps> = ({ username, registrationDate }) => {
   const [createdTests, setCreatedTests] = useState<Test[]>([]);
@@ -62,22 +62,9 @@ const Admin: React.FC<UserProfileProps> = ({ username, registrationDate }) => {
     fetchUserAndTests();
   }, []);
 
-  // Рендеринг
   return (
     <div className="profile-container">
       <h1 className="profile-header">Профиль пользователя</h1>
-
-      {userError ? (
-        <p className="error">{userError}</p>
-      ) : !user ? (
-        <p className="loading">Загрузка данных пользователя...</p>
-      ) : (
-        <div className="profile-info">
-          <h2>Имя пользователя: {user.username}</h2>
-          <p>Дата регистрации: {user.registrationDate}</p>
-        </div>
-      )}
-
       <div>
         <div className="profile-info">
           <h2>Имя пользователя: {username}</h2>
@@ -85,15 +72,15 @@ const Admin: React.FC<UserProfileProps> = ({ username, registrationDate }) => {
         </div>
         <h2>История созданных тестов</h2>
         {loading ? (
-          <p className="loading">Загрузка...</p>
+          <p>Загрузка...</p>
         ) : error ? (
-          <p className="error">{error}</p>
-        ) : tests.length > 0 ? (
+          <p>{error}</p>
+        ) : createdTests.length > 0 ? (
           <ul className="tests-list">
-            {tests.map((test) => (
-              <li key={test.title} className="test-item">
+            {createdTests.map((test) => (
+              <li key={test.id} className="test-item">
                 <h3>{test.title}</h3>
-                <p>Дата создания: {test.created_at}</p>
+                <p>Дата создания: {test.createdAt}</p>
               </li>
             ))}
           </ul>

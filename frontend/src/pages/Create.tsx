@@ -65,7 +65,7 @@ const Create: React.FC = () => {
   };
 
   const handleSave = () => {
-
+//сохранение данных теста
   };
 
   return (
@@ -156,7 +156,7 @@ const Create: React.FC = () => {
             Добавить вопрос с вариантами
           </button>
         </div>
-        <Link to="/questions">
+        <Link to="/adminRoom">
           <button className="save-test" onClick={handleSave}>
             Создать тест
           </button>
