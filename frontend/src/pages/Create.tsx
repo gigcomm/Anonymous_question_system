@@ -99,8 +99,8 @@ const Create: React.FC = () => {
             <option value="60sec">60 сек</option>
           </select>
         </div>
-        <div className='Text'>  
-        <input type="checkbox" id="Anon"/> 
+        <div className='Text'>
+          <input type="checkbox" id="Anon" />
           <label>Анонимность теста </label>
         </div>
         <div>
@@ -133,7 +133,12 @@ const Create: React.FC = () => {
                         onChange={(e) => handleQuestionChange(q.id, 'optionText', e.target.value, index)}
                         style={{ width: '80%', padding: '8px', fontSize: '14px' }}
                       />
-                       <input className="check" type="checkbox" id="check"/>
+                      <div className="custom-checkbox-container">
+                        <input type="checkbox" id={`custom-checkbox-${q.id}-${index}`} className="custom-checkbox" />
+                        <label  htmlFor={`custom-checkbox-${q.id}-${index}`} className="custom-label">
+                          <span className="tick-mark">&#10003;</span>
+                        </label>
+                      </div>
                       <button
                         type="button"
                         className="delete-option"

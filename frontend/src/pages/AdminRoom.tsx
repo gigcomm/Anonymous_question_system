@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react';
 import './AdminRoom.css';
-import { useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 
 type Participant = {
   id: number;
@@ -81,8 +81,8 @@ const AdminRoom: React.FC = () => { //  React.FC<AdminRoomProps> = ({ testId, ws
   const startTest = () => {
     wsRef.current?.send(JSON.stringify({ action: 'startTest', testId })); 
     alert('Тест начался!');
-    navigate(`/test`);  /// добавить если что${testId}
-    window.location.href = `/test`; // --это веб сокет ---  добавить если что${testId}
+    navigate(`/test${testId}`);  /// добавить если что${testId}
+    window.location.href = `/test${testId}`; // --это веб сокет ---  добавить если что${testId}
   };
 
   const allReady = participants.length > 0 && participants.every((p) => p.isReady);
@@ -119,10 +119,12 @@ const AdminRoom: React.FC = () => { //  React.FC<AdminRoomProps> = ({ testId, ws
       </ul>
       <button
         className="start-test-btn"
-        onClick={startTest}
+        //onClick={startTest}
         //disabled={!allReady} для того, чтобы не начать тест пока все не готовы
       >
+        <Link to="/test">
         Начать тест
+        </Link>
       </button>
     </div>
   );

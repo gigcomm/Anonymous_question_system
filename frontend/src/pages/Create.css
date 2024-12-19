@@ -177,6 +177,46 @@ button:active {
   background-color: #841d29;
 }
 
-.check{
-  background-color: #841d29;
+.custom-checkbox-container {
+  display: inline-block;
+  padding: 4px;
+}
+
+.custom-checkbox {
+  display: none; /* Скрываем стандартный чекбокс */
+}
+
+.custom-label {
+  width: 24px;
+  height: 24px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 50%;
+  background-color: red; /* Красный фон по умолчанию */
+  cursor: pointer;
+  position: relative;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.custom-label .tick-mark {
+  color: white;
+  font-size: 16px;
+  display: none; /* Галочка скрыта по умолчанию */
+  transform: scale(0); /* Уменьшение для анимации */
+  transition: transform 0.2s ease;
+}
+
+.custom-checkbox:checked + .custom-label {
+  background-color: green; /* Зеленый фон при активном состоянии */
+  transform: scale(1.1); /* Легкий рост при переключении */
+}
+
+.custom-checkbox:checked + .custom-label .tick-mark {
+  display: block; /* Показываем галочку */
+  transform: scale(1); /* Галочка плавно увеличивается */
+}
+
+.custom-label:active {
+  transform: scale(0.9); /* Легкое сжатие при нажатии */
 }
