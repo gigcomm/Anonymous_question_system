@@ -90,7 +90,32 @@ body {
     margin-bottom: 0;
 }
 
-
+.button-test {
+    display: inline-block;
+    padding: 10px 20px;
+    font-size: 16px;
+    font-weight: bold;
+    text-align: center;
+    text-transform: capitalize;
+    color: #ffffff;
+    background-color: #007BFF; /* Исходный цвет кнопки */
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  }
+  
+  .button-test:hover {
+    background-color: #0056b3; /* Цвет при наведении */
+    transform: scale(1.05); /* Лёгкое увеличение кнопки */
+  }
+  
+  .button-test:active {
+    background-color: #003d80; /* Цвет при нажатии */
+    transform: scale(0.95); /* Лёгкое уменьшение при нажатии */
+  }
+  
 
 
 

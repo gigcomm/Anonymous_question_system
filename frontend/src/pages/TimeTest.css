@@ -1,0 +1,17 @@
+.timed-question-page-simple {
+    font-family: Arial, sans-serif;
+    text-align: center;
+    padding: 20px;
+  }
+  
+  .question-timer {
+    margin-bottom: 20px;
+    font-size: 18px;
+  }
+  
+  .question-container {
+    margin: 20px 0;
+    font-size: 90px;
+    font-weight: bold;
+  }
+  

@@ -8,6 +8,9 @@ const Footer: React.FC = () => {
         <div className="footer-section creator">
           <h3>Создатель сайта</h3>
           <p>Кущенко Владислав</p>
+          <p>Гулый Игорь</p>
+          <p>Гумен Максим</p>
+          <p className="niz">Коржова Мария</p>
         </div>
         <div className="footer-section contacts">
           <h3>Наши контакты</h3>

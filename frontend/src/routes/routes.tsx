@@ -11,6 +11,7 @@ import Answer from '../pages/answers';
 import WaitingRoom from '../pages/WaitingRoom';
 import AdminRoom from '../pages/AdminRoom';
 import TestResults from '../pages/TestResults';
+import TimeTest from '../pages/TimeTest';
 
 export const useRoutes = () => {
 
@@ -25,7 +26,8 @@ export const useRoutes = () => {
       <Route path="/waitingRoom" element={<WaitingRoom />} />
       <Route path="/adminRoom" element={<AdminRoom />} />
       <Route path="/testResults" element={<TestResults />} />
-      
+      <Route path="/timeTest" element={<TimeTest />} />
+
       <Route path='/admin' element={<Admin />} />
       <Route path="/create" element={<Create />} />
 

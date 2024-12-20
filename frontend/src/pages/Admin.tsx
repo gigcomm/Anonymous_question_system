@@ -83,6 +83,7 @@ const Admin: React.FC<UserProfileProps> = ({ username, registrationDate }) => {
               <li key={test.id} className="test-item">
                 <h3>{test.title}</h3>
                 <p>Дата создания: {test.createdAt}</p>
+                <button className="button-test" id={test.title}><Link to="/testResults">TEST</Link></button>
               </li>
             ))}
           </ul>
